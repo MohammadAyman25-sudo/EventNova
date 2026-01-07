@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('provider');
             $table->string('provider_id');
+            $table->json('provider_user_data');
             $table->text('access_token');
             $table->text('refresh_token');
-            $table->json('provider_user_data');
+            $table->datetime('expires_at')->nullable();
             $table->timestamps();
             $table->unique(['provider', 'provider_id']);
         });
