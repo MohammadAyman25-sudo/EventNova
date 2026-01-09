@@ -26,5 +26,41 @@
                 {{ $slot }}
             </div>
         </div>
+        <script>
+            function togglePassword(e) {
+                console.log(e);
+                const passwordField = document.getElementById(e.target.dataset.id);
+                const eyes = document.getElementsByClassName('eye');
+                const eyeSlashs = document.getElementsByClassName('eye-slash');
+                console.log(eyes, eyeSlashs);
+                let eye = null;
+                let eyeSlash = null;
+                for (let i = 0; i < eyes.length; i++) {
+                    console.log(eyes[i].parentElement.dataset.id === e.target.dataset.id);
+                    if (eyes[i].parentElement.dataset.id === e.target.dataset.id) {
+                        eye = eyes[i];
+                        break;
+                    }
+                }
+                for (let i = 0; i < eyeSlashs.length; i++) {
+                    if (eyeSlashs[i].parentElement.dataset.id === e.target.dataset.id) {
+                        eyeSlash = eyeSlashs[i];
+                        break;
+                    }
+                }
+
+                console.log(eye, eyeSlash);
+
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    eye.classList.remove('hidden');
+                    eyeSlash.classList.add('hidden');
+                } else {
+                    passwordField.type = 'password';
+                    eye.classList.add('hidden');
+                    eyeSlash.classList.remove('hidden');
+                }
+            }
+        </script>
     </body>
 </html>

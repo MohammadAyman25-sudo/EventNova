@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^3.1",
+        "blade-ui-kit/blade-heroicons": "^2.6",
         "dotswan/filament-map-picker": "^2.1",
         "filament/filament": "^4.0",
         "laravel/cashier": "^16.1",
@@ -18,6 +19,7 @@
         "pxlrbt/filament-excel": "^3.3",
         "shetabit/payment": "^6.3",
         "simplesoftwareio/simple-qrcode": "^4.2",
+        "spatie/laravel-data": "^4.18",
         "spatie/laravel-medialibrary": "^11.17",
         "spatie/laravel-permission": "^6.24",
         "srmklive/paypal": "^3.0"
