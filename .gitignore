@@ -24,3 +24,5 @@ Homestead.yaml
 Thumbs.db
 _ide_helper.php
 .phpstorm.meta.php
+composer.lock
+package-lock.json

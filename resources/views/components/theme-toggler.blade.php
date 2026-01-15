@@ -73,6 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
     darkBtn?.addEventListener('click', () => {setTheme('system'); lightBtn.classList.remove('flex'); lightBtn.classList.add('hidden'); darkBtn.classList.remove('flex'); darkBtn.classList.add('hidden'); systemBtn.classList.remove('hidden'); systemBtn.classList.add('flex');});
     systemBtn?.addEventListener('click', () => {setTheme('light'); lightBtn.classList.remove('hidden'); lightBtn.classList.add('flex'); darkBtn.classList.remove('flex'); darkBtn.classList.add('hidden'); systemBtn.classList.remove('flex'); systemBtn.classList.add('hidden');});
 
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.classList.add('dark');
+        systemBtn.classList.remove('hidden');
+        systemBtn.classList.add('flex');
+        lightBtn.classList.remove('flex');
+        lightBtn.classList.add('hidden');
+        darkBtn.classList.remove('flex');
+        darkBtn.classList.add('hidden');
+    } else {
+        html.classList.remove('dark');
+        lightBtn.classList.remove('hidden');
+        lightBtn.classList.add('flex');
+        darkBtn.classList.remove('flex');
+        darkBtn.classList.add('hidden');
+        systemBtn.classList.remove('flex');
+        systemBtn.classList.add('hidden');  
+    }
+
     // Listen for system changes when in "system" mode
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!('theme' in localStorage)) {

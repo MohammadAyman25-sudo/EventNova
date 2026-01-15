@@ -83,6 +83,9 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "db-refresh": [
+            "@php artisan migrate:fresh --seed"
         ]
     },
     "extra": {
