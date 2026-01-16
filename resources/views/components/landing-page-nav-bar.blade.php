@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex justify-between items-center h-16 sm:h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -25,9 +25,10 @@
 
             
             <!-- Settings Dropdown -->
-            <div class="hidden md:flex md:items-center md:ms-6">
+            <div class="flex items-center space-x-2 sm:space-x-4">
                 <x-theme-toggler />
-                
+                <a href="{{ route('login') }}" class="hidden sm:inline-block px-4 lg:px-5 py-2 sm:py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all whitespace-nowrap cursor-pointer capitalize">Sign in</a>
+                <a href="{{ route('register') }}" class="px-3 sm:px-5 py-2 sm:py-2.5 text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:shadow-lg transition-all whitespace-nowrap cursor-pointer">Get Started</a>
             </div>
 
             <!-- Hamburger -->
