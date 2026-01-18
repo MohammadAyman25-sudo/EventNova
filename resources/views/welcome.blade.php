@@ -22,5 +22,7 @@
     <body class="min-h-screen bg-white dark:bg-gray-900">
         <x-landing-page-nav-bar />
         <x-landing.sections.hero/>
+        <x-landing.sections.features/>
+        <x-landing.sections.categories/>
     </body>
 </html>
