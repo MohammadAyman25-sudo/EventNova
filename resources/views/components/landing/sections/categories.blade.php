@@ -8,8 +8,13 @@
                 Find events that match your interests and passions
             </p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-            <x-icons.palette />
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-6">
+            <x-category-card background="bg-gradient-to-br from-purple-500 to-pink-500" icon="music" category="Music & Concerts"/>
+            <x-category-card background="bg-gradient-to-br from-purple-500 to-pink-500" icon="music" category="Music & Concerts"/>
+            <x-category-card background="bg-gradient-to-br from-purple-500 to-pink-500" icon="music" category="Music & Concerts"/>
+            <x-category-card background="bg-gradient-to-br from-purple-500 to-pink-500" icon="music" category="Music & Concerts"/>
+            <x-category-card background="bg-gradient-to-br from-purple-500 to-pink-500" icon="music" category="Music & Concerts"/>
+            <x-category-card background="bg-gradient-to-br from-purple-500 to-pink-500" icon="music" category="Music & Concerts"/>
         </div>
     </div>
 </section>

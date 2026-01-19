@@ -7,7 +7,7 @@
         class="w-10 h-10 flex items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
         aria-label="Use light theme"
     >
-        <x-heroicon-o-sun class="w-7 h-7" />
+        <x-icons.sun class="w-7 h-7" />
     </button>
 
     <!-- Dark Mode -->
@@ -18,7 +18,7 @@
         class="hidden w-10 h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
         aria-label="Use dark theme"
     >
-        <x-heroicon-o-moon class="w-7 h-7" />
+        <x-icons.moon class="w-7 h-7" />
     </button>
 
     <!-- System Mode -->
@@ -29,7 +29,7 @@
         class="hidden w-10 h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
         aria-label="Use system theme"
     >
-        <x-heroicon-o-computer-desktop class="w-7 h-7" />
+        <x-icons.computer class="w-7 h-7" />
     </button>
 </div>
 

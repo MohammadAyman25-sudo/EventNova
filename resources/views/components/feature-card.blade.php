@@ -7,10 +7,10 @@
 
 @php
     $iconMap = [
-        'discover' => 'heroicon-o-magnifying-glass',
-        'book' => 'heroicon-o-ticket',
-        'create-events' => 'ionicon-calendar-sharp',
-        'notification' => 'heroicon-o-bell',
+        'discover' => 'icons.search',
+        'book' => 'icons.ticket',
+        'create-events' => 'icons.calendar',
+        'notification' => 'icons.bell',
     ];
 
     $iconName = $iconMap[$icon];
