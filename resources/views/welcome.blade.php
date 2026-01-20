@@ -25,5 +25,6 @@
         <x-landing.sections.features/>
         <x-landing.sections.categories/>
         <x-landing.sections.testimonials/>
+        <x-landing.sections.prefooter/>
     </body>
 </html>
