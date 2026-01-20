@@ -24,5 +24,6 @@
         <x-landing.sections.hero/>
         <x-landing.sections.features/>
         <x-landing.sections.categories/>
+        <x-landing.sections.testimonials/>
     </body>
 </html>
