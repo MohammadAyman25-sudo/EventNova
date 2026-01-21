@@ -20,11 +20,12 @@
         @endif
     </head>
     <body class="min-h-screen bg-white dark:bg-gray-900">
-        <x-landing-page-nav-bar />
+        <x-landing.sections.nav-bar />
         <x-landing.sections.hero/>
         <x-landing.sections.features/>
         <x-landing.sections.categories/>
         <x-landing.sections.testimonials/>
         <x-landing.sections.prefooter/>
+        <x-landing.sections.footer/>
     </body>
 </html>

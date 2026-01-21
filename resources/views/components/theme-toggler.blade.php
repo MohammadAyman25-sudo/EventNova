@@ -4,10 +4,10 @@
         type="button"
         id="theme-light"
         title="Current:light"
-        class="w-10 h-10 flex items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+        class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
         aria-label="Use light theme"
     >
-        <x-icons.sun class="w-7 h-7" />
+        <x-icons.sun class="text-lg sm:text-xl" />
     </button>
 
     <!-- Dark Mode -->
@@ -15,10 +15,10 @@
         type="button"
         id="theme-dark"
         title="Current:dark"
-        class="hidden w-10 h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+        class="hidden w-9 h-9 sm:w-10 sm:h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
         aria-label="Use dark theme"
     >
-        <x-icons.moon class="w-7 h-7" />
+        <x-icons.moon class="text-lg sm:text-xl" />
     </button>
 
     <!-- System Mode -->
@@ -26,10 +26,10 @@
         type="button"
         id="theme-system"
         title="Current:system"
-        class="hidden w-10 h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+        class="hidden w-9 h-9 sm:w-10 sm:h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
         aria-label="Use system theme"
     >
-        <x-icons.computer class="w-7 h-7" />
+        <x-icons.computer class="text-lg sm:text-xl" />
     </button>
 </div>
 

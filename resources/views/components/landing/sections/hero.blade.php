@@ -16,13 +16,12 @@
                 From concerts to workshops, find and book amazing experiences happening near you. Create unforgettable memories with EventNova.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
-                <a href="{{route('register')}}" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl hover:shadow-2xl hover:scale-105 transition-all whitespace-nowrap cursor-pointer flex items-center space-x-1.5">
-                    <x-icons.rocket class="w-5 h-5 text-white"/>
+                <a href="{{route('register')}}" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl hover:shadow-2xl hover:scale-105 transition-all whitespace-nowrap cursor-pointer flex items-center justify-center">
+                    <x-icons.rocket class="mr-2"/>
                     <span>Start Exploring</span>
                 </a>
-                <a href="#" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-lg transition-all whitespace-nowrap cursor-pointer flex items-center space-x-1.5">
-                    <x-icons.compass class="w-5 h-5 dark:text-gray-300 text-gray-700"/>
-                    <span>Browse Events</span>
+                <a href="#" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-lg transition-all whitespace-nowrap cursor-pointer flex items-center justify-center">
+                    <x-icons.compass class="mr-2"/><span>Browse Events</span>
                 </a>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto px-4">
