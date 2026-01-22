@@ -1,8 +1,8 @@
-<x-guest-layout>
+<x-guest-layout title="Welcome Back" paragraph="Sign in to continue to EventNova">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="space-y-6">
         @csrf
 
         <!-- Email Address -->
@@ -25,23 +25,21 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+        <div class="flex items-center justify-between">
+            <label for="remember_me" class="inline-flex items-center gap-2 cursor-pointer">
+                <input id="remember_me" type="checkbox" class="w-4 h-4 text-purple-600 rounded" name="remember">
+                <span class="text-sm text-gray-600 dark:text-gray-300">{{ __('Remember me') }}</span>
             </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
+            {{-- <button class="text-sm text-purple-600 hover:text-purple-700 font-semibold">Forgot Password?</button> --}}
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                <a class="text-sm text-purple-600 hover:text-purple-700 font-semibold" href="{{ route('password.request') }}">
+                    {{ __('Forgot Password?') }}
                 </a>
             @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
         </div>
+
+        <x-primary-button class="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transition-all whitespace-nowrap">
+            {{ __('Sign In') }}
+        </x-primary-button>
     </form>
 </x-guest-layout>

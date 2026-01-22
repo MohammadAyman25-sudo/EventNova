@@ -12,22 +12,31 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        @include('components.theme-init')
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 flex items-center justify-center px-4 py-12">
-            <div class="max-w-full">
+            <div class="max-w-md w-full">
                 <div class="text-center mb-8">
                     <div class="inline-block p-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl mb-4">
                         <x-icons.calendar class="text-5xl"/>
                     </div>
                     <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">{{ $title??"Test" }}</h1>
-                    <p class="text-gray-600 dark:text-gray-300">{{ $paragraph ?? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corrupti, ad error iste quam, libero in dolores molestiae quos aliquam optio necessitatibus molestias laboriosam consectetur. Pariatur libero illo cum aliquid!" }}</p>
+                    <p class="text-gray-600 dark:text-gray-300">{{ $paragraph ?? "Lorem ipsum dolor sit amet consectetur !" }}</p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8">
                     {{ $slot }}
+                    <div class="mt-6">
+                        
+                    </div>
                 </div>
+                <button class="w-full mt-6 py-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold flex items-center justify-center gap-2 whitespace-nowrap">
+                    <x-icons.arrow-left class="fill-current stroke-current" />
+                    Back to Home
+                </button>
             </div>
         </div>
         <script>
@@ -36,7 +45,6 @@
                 const passwordField = document.getElementById(e.target.dataset.id);
                 const eyes = document.getElementsByClassName('eye');
                 const eyeSlashs = document.getElementsByClassName('eye-slash');
-                console.log(eyes, eyeSlashs);
                 let eye = null;
                 let eyeSlash = null;
                 for (let i = 0; i < eyes.length; i++) {
@@ -52,8 +60,6 @@
                         break;
                     }
                 }
-
-                console.log(eye, eyeSlash);
 
                 if (passwordField.type === 'password') {
                     passwordField.type = 'text';
