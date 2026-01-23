@@ -54,19 +54,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial load
-    if (localStorage.theme === 'dark') {
-        html.classList.add('dark');
-    } else if (localStorage.theme === 'light') {
-        html.classList.remove('dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        html.classList.add('dark');
-    }
 
     // Get Buttons
     const lightBtn = document.getElementById('theme-light');
     const darkBtn = document.getElementById('theme-dark');
     const systemBtn = document.getElementById('theme-system');
+
+    // Initial load
+    if (localStorage.theme === 'dark') {
+        html.classList.add('dark');
+        lightBtn.classList.remove('flex');
+        lightBtn.classList.add('hidden');
+        systemBtn.classList.remove('flex');
+        systemBtn.classList.add('hidden');
+        darkBtn.classList.remove('hidden');
+        darkBtn.classList.add('flex');
+    } else if (localStorage.theme === 'light') {
+        html.classList.remove('dark');
+        lightBtn.classList.remove('hidden');
+        lightBtn.classList.add('flex');
+        systemBtn.classList.remove('flex');
+        systemBtn.classList.add('hidden');
+        darkBtn.classList.remove('flex');
+        darkBtn.classList.add('add');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.classList.add('dark');
+        lightBtn.classList.remove('flex');
+        lightBtn.classList.add('hidden');
+        systemBtn.classList.remove('hidden');
+        systemBtn.classList.add('flex');
+        darkBtn.classList.remove('flex');
+        darkBtn.classList.add('hidden');
+    }
 
     // Button listeners
     lightBtn?.addEventListener('click', () => {setTheme('dark'); lightBtn.classList.remove('flex'); lightBtn.classList.add('hidden'); darkBtn.classList.remove('hidden'); darkBtn.classList.add('flex'); systemBtn.classList.remove('flex'); systemBtn.classList.add('hidden');});

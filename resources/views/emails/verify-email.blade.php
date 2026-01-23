@@ -32,7 +32,7 @@
         }
 
         .email-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             background: #ffffff !important;
             border-radius: 12px;
@@ -61,7 +61,7 @@
         }
 
         .content {
-            padding: 32px;
+            padding: 12px;
             text-align: center;
             background: #ffffff !important;
             color: #111827 !important;
@@ -108,7 +108,7 @@
         }
 
         .footer {
-            padding: 24px;
+            padding: 12px;
             font-size: 14px;
             color: #6b7280 !important;
             text-align: center;
@@ -150,7 +150,7 @@
         }
 
         @media only screen and (max-width: 480px) {
-            .content { padding: 24px !important; }
+            .content { width:100%; padding: 6px !important; }
             .button { width: 100% !important; box-sizing: border-box; }
         }
     </style>
