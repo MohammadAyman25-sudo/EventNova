@@ -20,6 +20,7 @@ class UserRepository
         $user->last_name = $registerationRequestDTO->last_name;
         $user->email = $registerationRequestDTO->email;
         $user->password = $registerationRequestDTO->password;
+        $user->assignRole($registerationRequestDTO->role);
         $user->save();
         return $user;
     }

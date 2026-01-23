@@ -8,7 +8,7 @@
         type="button" 
         onclick="togglePassword(event)"
         data-id="{{$attributes['id']}}"
-        class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
+        class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
     >
         <!-- Eye (hidden by default) -->
         <x-heroicon-o-eye-slash data-id="{{$attributes['id']}}" class="w-5 h-5 eye-slash"/>

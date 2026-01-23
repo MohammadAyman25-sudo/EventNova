@@ -1,4 +1,9 @@
 <x-guest-layout title="Create Account" paragraph="Join EventNova today">
+    @if (!empty($errors->get('registration_error')))
+        <div class="text-center px-10 py-4 text-red-500/90 border-2 border-red-500 rounded-xl">
+            {{ $errors->get('registration_error')[0] }}
+        </div>
+    @endif
     <form method="POST" action="{{ route('register') }}" class="space-y-6">
         @csrf
 

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
@@ -29,6 +31,14 @@ class AppServiceProvider extends ServiceProvider
                     ->numbers()
                     ->symbols()
                     ->uncompromised();
+        });
+        VerifyEmail::toMailUsing(function ($notifiable, string $verificationUrl) {
+            return (new MailMessage)
+                ->subject("Verify Email")
+                ->view('emails.verify-email', [
+                    'user' => $notifiable,
+                    'verificationUrl' => $verificationUrl,
+                ]);
         });
     }
 }

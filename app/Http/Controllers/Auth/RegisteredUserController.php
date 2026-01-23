@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     {
         try {
             (new RegisterationService())->register($request->getData());
-            return redirect(route('dashboard', absolute: false));
+            return redirect(route('verify-email', absolute: false));
         } catch (\Throwable $th) {
             Log::error('Registration Error: ' . $th->getMessage());
             return redirect()->back()->withInput()->withErrors(['registration_error' => 'An error occurred during registration. Please try again.']);

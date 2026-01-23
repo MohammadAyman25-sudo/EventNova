@@ -11,4 +11,5 @@ class RegisterationRequestDTO extends Data
     public string $email;
     public string $password;
     public string $password_confirmation;
+    public string $role;
 }
