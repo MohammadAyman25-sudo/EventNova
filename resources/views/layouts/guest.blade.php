@@ -30,10 +30,10 @@
                 <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8">
                     {{ $slot }}
                 </div>
-                <button class="w-full mt-6 py-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold flex items-center justify-center gap-2 whitespace-nowrap">
+                <a href="{{ route('home') }}" class="w-full mt-6 py-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold flex items-center justify-center gap-2 whitespace-nowrap">
                     <x-icons.arrow-left class="fill-current stroke-current" />
                     Back to Home
-                </button>
+                </a>
             </div>
         </div>
         <script>
