@@ -19,6 +19,14 @@ class UserRoleService
         $userRecord = (new UserRepository())->create(RegisterationRequestDTO::from([...$user, 'first_name'=>$first_name, 'last_name'=>$last_name, 'role' => $userRoleDTO->role]));
         $userRecord->email_verified_at = $user->email_verified_at ?? now();
         $userRecord->save();
+        try {
+            $userRecord->addMediaFromUrl($user['avatar'])
+                   ->preservingOriginal()
+                   ->withResponsiveImages()
+                   ->toMediaCollection('avatar');
+        } catch (\Exception $th) {
+            Log::error('Failed to import FB avatar:'.$th->getMessage());
+        }
 
         (new SocialAccountRepository())->create($userRecord, $provider, $user);
 

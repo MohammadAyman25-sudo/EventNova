@@ -18,9 +18,10 @@ class SocialAuthService
 
             session(['pending_social_user'=>$user]);
             session(['provider' => $provider]);
+            // dd($user);
             return redirect()->route('register-role');
         } catch (\Exception $th) {
-            return redirect('/login');
+            return redirect('/login')->with('error', 'Authentication Failed');
         }
     }
 }

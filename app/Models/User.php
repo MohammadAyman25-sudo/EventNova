@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
@@ -65,5 +66,17 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         $this->addMediaCollection('avatar')
             ->singleFile(); // Ensures only one avatar per user
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+             ->width(120)
+             ->height(120)
+             ->sharpen(10);
+
+        $this->addMediaConversion('medium')
+             ->width(400)
+             ->height(400);
     }
 }

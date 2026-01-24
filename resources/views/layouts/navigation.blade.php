@@ -42,7 +42,13 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-pink-600"><span class="text-white font-black text-xl">{{ strtoupper(Auth::user()->first_name[0].Auth::user()->last_name[0]) }}</span></div>
+                            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-pink-600">
+                                @if (Auth::user()->hasMedia('avatar'))
+                                    <img src="{{ Auth::user()->getFirstMediaUrl('avatar') }}" alt="Profile Picture" class="rounded-full">
+                                @else
+                                    <span class="text-white font-black text-xl">{{ strtoupper(Auth::user()->first_name[0].Auth::user()->last_name[0]) }}</span>
+                                @endif
+                            </div>
                         </button>
                     </x-slot>
 
