@@ -7,7 +7,7 @@
     <form method="POST" action="{{ route('register') }}" class="space-y-6">
         @csrf
 
-        <div class="grid grid-cols-2 gap-4 !mt-0">
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 !mt-0">
             <!-- First Name -->
             <div>
                 <x-input-label for="firstName" :value="__('First Name')" />
@@ -57,7 +57,7 @@
 
         <div>
             <x-input-label :value="__('I want to')"/>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">    
                 <x-input-radio name="role" value="attendee" icon="icons.user" checked="true" text="Attend Events"/>
                 <x-input-radio name="role" value="organizer" icon="icons.calendar-2" text="Create Events"/>
             </div>
