@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('provider_id');
             $table->json('provider_user_data');
             $table->text('access_token');
-            $table->text('refresh_token');
+            $table->text('refresh_token')->nullable();
             $table->datetime('expires_at')->nullable();
             $table->timestamps();
             $table->unique(['provider', 'provider_id']);

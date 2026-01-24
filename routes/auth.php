@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RoleController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +37,11 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
+Route::middleware(['guest', 'socialite.registration'])->group(function () {
+    Route::view('register-role', 'auth.choose-role')->name('register-role');
+    Route::post('register-role', [RoleController::class, 'create'])->name('register.assign-role');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
@@ -57,3 +64,11 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+Route::get('/auth/{provider}', [SocialAuthController::class, 'redirectToProvider'])
+        ->where('provider', 'google|facebook')
+        ->name('social.redirect');
+
+Route::get('auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])
+        ->where('provider', 'google|facebook')        
+        ->name('social.callback');
