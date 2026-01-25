@@ -19,4 +19,9 @@ class SocialAccount extends Model
     protected $casts = [
         'provider_user_data' => 'array',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

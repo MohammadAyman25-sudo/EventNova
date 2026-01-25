@@ -48,14 +48,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
+    protected $casts = [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'trail_ends_at' => 'datetime',
         ];
-    }
 
     public function getFullNameAttribute() 
     {
@@ -65,7 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('avatar')
-            ->singleFile(); // Ensures only one avatar per user
+             ->singleFile(); // Ensures only one avatar per user
     }
 
     public function registerMediaConversions(?Media $media = null): void

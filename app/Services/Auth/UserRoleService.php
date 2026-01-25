@@ -8,6 +8,7 @@ use App\Repositories\SocialAccount\SocialAccountRepository;
 use App\Repositories\User\UserRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserRoleService
 {

@@ -4,6 +4,7 @@ namespace App\Repositories\SocialAccount;
 
 use App\Models\SocialAccount;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class SocialAccountRepository
 {
@@ -18,5 +19,16 @@ class SocialAccountRepository
         $socialAccount->refresh_token = $socialAccountData['refreshToken'];
         $socialAccount->expires_at = now()->addSeconds($socialAccountData['expiresIn']);
         $socialAccount->save();
+    }
+
+    public function getUserByProviderId(string $providerId):?User
+    {
+        $socialAccount = ($this->initialQuery()->where('provider_id', $providerId))->first();
+        return $socialAccount ? $socialAccount->user()->first() : null;
+    }
+
+    private function initialQuery():Builder
+    {
+        return (new SocialAccount())->newModelQuery();
     }
 }
