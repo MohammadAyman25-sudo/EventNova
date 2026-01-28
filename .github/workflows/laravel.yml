@@ -1,0 +1,28 @@
+name: Laravel Code Check
+
+on: [push]
+jobs:
+  laravel-syntax-and-security-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2" # Specify the PHP version here
+          tools: composer:v2
+
+      - name: Validate PHP syntax
+        run: find . -name \*.php -exec php -l {} \;
+
+      - name: install dependencies
+        run: composer install --no-progress
+
+      - name: security check
+        uses: symfonycorp/security-checker-action@v4
+
+      # - name: Check for PHP security vulnerabilities
+      #   run: symfony security:check
