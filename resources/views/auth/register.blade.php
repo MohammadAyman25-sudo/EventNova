@@ -1,9 +1,4 @@
 <x-guest-layout title="Create Account" paragraph="Join EventNova today">
-    @if (!empty($errors->get('registration_error')))
-        <div class="text-center px-10 py-4 text-red-500/90 border-2 border-red-500 rounded-xl">
-            {{ $errors->get('registration_error')[0] }}
-        </div>
-    @endif
     <form method="POST" action="{{ route('register') }}" class="space-y-6">
         @csrf
 
@@ -12,14 +7,14 @@
             <div>
                 <x-input-label for="firstName" :value="__('First Name')" />
                 <x-text-input id="firstName" placeholder="John" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="name" />
-                <x-input-error :messages="$errors->get('name')" />
+                <x-input-error :messages="$errors->get('first_name')" />
             </div>
 
             <!-- Last Name -->
             <div>
                 <x-input-label for="lastName" :value="__('Last Name')" />
                 <x-text-input id="lastName" placeholder="Doe" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="name" />
-                <x-input-error :messages="$errors->get('name')" />
+                <x-input-error :messages="$errors->get('last_name')" />
             </div>
         </div>
 
@@ -57,7 +52,8 @@
 
         <div>
             <x-input-label :value="__('I want to')"/>
-            <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">    
+            <x-input-error :messages="$errors->get('role')" class="mt-2" /> 
+            <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
                 <x-input-radio name="role" value="attendee" icon="icons.user" checked="true" text="Attend Events"/>
                 <x-input-radio name="role" value="organizer" icon="icons.calendar-2" text="Create Events"/>
             </div>

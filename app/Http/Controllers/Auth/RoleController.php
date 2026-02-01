@@ -13,7 +13,7 @@ class RoleController extends Controller
     {
         try {
             (new UserRoleService())->assignUserRole($request->getData());
-            return redirect()->route('dashboard');
+            return redirect()->route('interests');
         } catch (\Exception $th) {
             Log::error($th->getMessage());
             return back()->withErrors([

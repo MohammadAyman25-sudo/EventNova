@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::view('interests', 'interests')->name('interests');
 
 Route::view('web/test-mail', 'emails.verify-email', [
     'user' => UserDTO::from([

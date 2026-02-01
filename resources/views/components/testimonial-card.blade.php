@@ -7,11 +7,9 @@
 
 <div class="p-6 sm:p-8 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
     <div class="flex items-center mb-3 sm:mb-4">
-        <x-icons.star />
-        <x-icons.star />
-        <x-icons.star />
-        <x-icons.star />
-        <x-icons.star />
+        @for ($i=0; $i<5; $i++)
+            <x-icons.star class="fill-yellow-500"/>
+        @endfor
     </div>
     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
         "{{ $quote }}"

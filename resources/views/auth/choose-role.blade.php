@@ -1,13 +1,9 @@
 <x-guest-layout title="Complete Registeration" paragraph="Choose your role">
-    <div class="flex items-center">
-        @if (!empty($errors))
-            <x-input-error :messages="$errors->get('role')"/>
-        @endif
-    </div>
     <form method="POST" action="{{ route('register.assign-role') }}" class="space-y-6">
         @csrf
         <div>
             <x-input-label :value="__('I want to')"/>
+            <x-input-error :messages="$errors->get('role')" />
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">    
                 <x-input-radio name="role" value="attendee" icon="icons.user" checked="true" text="Attend Events"/>
                 <x-input-radio name="role" value="organizer" icon="icons.calendar-2" text="Create Events"/>
