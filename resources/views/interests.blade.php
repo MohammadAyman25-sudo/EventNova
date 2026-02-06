@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="flex gap-4">
-            <button type="button" class="flex-1 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:border-purple-300 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all whitespace-nowrap cursor-pointer">Skip for Now</button>
+            <button type="button" class="skip flex-1 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:border-purple-300 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all whitespace-nowrap cursor-pointer">Skip for Now</button>
             <button type="submit" disabled class="submit-interests flex-1 py-4 rounded-full font-semibold transtion-all whitespace-nowrap disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-500 dark:disabled:text-gray-500 disabled:cursor-not-allowed enabled:bg-gradient-to-r enabled:from-purple-600 enabled:to-pink-600 enabled:text-white enabled:hover:shadow-lg enabled:cursor-pointer">Save Preferences</button>
         </div>
     </form>
@@ -51,6 +51,8 @@
         <script>
             let chosenCategories = document.querySelectorAll('.interests');
             let btnSubmit = document.querySelector('.submit-interests');
+            let btnSkip = document.querySelector('.skip');
+
             let countChoices = 0;
             chosenCategories.forEach(element => {
                 element.addEventListener('change', function(){
@@ -69,6 +71,10 @@
             btnSubmit.addEventListener('click', function(){
                 btnSubmit.innerText = 'Submitting...';
                 btnSubmit.addAttribute('disabled');
+            });
+
+            btnSkip.addEventListener('click', function(){
+                window.location.pathname="/dashboard";
             });
 
         </script>
