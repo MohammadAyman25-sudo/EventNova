@@ -3,7 +3,8 @@
     "icon",
     "optionTitle",
     "optionDesc",
-    "checked" => null
+    "checked" => null,
+    "value",
 ])
 
 <label class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all cursor-pointer">
@@ -16,5 +17,5 @@
             <p class="text-sm text-gray-600 dark:text-gray-400">{{ $optionDesc }}</p>
         </div>
     </div>
-    <input class="w-6 h-6 text-purple-600 rounded focus:ring-purple-500 cursor-pointer" type="checkbox" {{ $checked?"checked":"" }}>
+    <input class="w-6 h-6 text-purple-600 rounded focus:ring-purple-500 cursor-pointer" type="checkbox" name="notification_preferences[]" value="{{ $value }}">
 </label>

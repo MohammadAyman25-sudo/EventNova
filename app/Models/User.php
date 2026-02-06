@@ -29,6 +29,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'email',
         'password',
         'theme',
+        'notify_new_events',
+        'notify_weekly_digest',
+        'notify_trending',
+        'notification_frequency',
+        'notification_channels'
     ];
 
     public function sendPasswordResetNotification($token)
@@ -58,6 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'trail_ends_at' => 'datetime',
+            'notification_channels' => 'array',
         ];
 
     public function getFullNameAttribute() 
@@ -81,5 +87,10 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         $this->addMediaConversion('medium')
              ->width(400)
              ->height(400);
+    }
+
+    public function interests()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }
