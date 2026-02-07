@@ -37,7 +37,7 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
-Route::middleware(['auth', 'socialite.registration'])->group(function () {
+Route::middleware(['socialite.registration'])->group(function () {
     Route::view('register-role', 'auth.choose-role')->name('register-role');
     Route::post('register-role', [RoleController::class, 'create'])->name('register.assign-role');
 });

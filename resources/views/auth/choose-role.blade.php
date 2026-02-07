@@ -5,7 +5,7 @@
             <x-input-label :value="__('I want to')"/>
             <x-input-error :messages="$errors->get('role')" />
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">    
-                <x-input-radio name="role" value="attendee" icon="icons.user" checked="true" text="Attend Events"/>
+                <x-input-radio name="role" value="attendee" icon="icons.user" text="Attend Events"/>
                 <x-input-radio name="role" value="organizer" icon="icons.calendar-2" text="Create Events"/>
             </div>
         </div>

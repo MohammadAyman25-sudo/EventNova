@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['prefix' => 'kyc', 'middleware' => 'auth'], function() {
-    Route::view('interests', 'interests', ['categories' => Category::all()])->name('interests');
+    Route::get('interests',[InterestsController::class, 'show'])->name('interests');
     Route::post('interests', [InterestsController::class, 'store'])->name('submit.interest');
 });
 

@@ -26,7 +26,7 @@ class UserRoleService
                    ->withResponsiveImages()
                    ->toMediaCollection('avatar');
         } catch (\Exception $th) {
-            Log::error('Failed to import FB avatar:'.$th->getMessage());
+            Log::error('Failed to import avatar:'.$th->getMessage());
         }
 
         (new SocialAccountRepository())->create($userRecord, $provider, $user);

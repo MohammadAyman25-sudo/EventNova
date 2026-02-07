@@ -19,4 +19,10 @@ class InterestsController extends Controller
             return back()->with('interests', 'something went wrong');
         }
     }
+
+    public function show() {
+        return view('interests', [
+            'categories' => Category::all(),
+        ]);
+    }
 }

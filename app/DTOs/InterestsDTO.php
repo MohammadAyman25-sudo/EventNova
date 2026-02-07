@@ -7,5 +7,5 @@ use Spatie\LaravelData\Data;
 class InterestsDTO extends Data
 {
     public array $interests;
-    public array $notification_preferences;
+    public ?array $notification_preferences;
 }
