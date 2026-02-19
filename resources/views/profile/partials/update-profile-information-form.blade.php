@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-gray-900 dark:text-white">
             {{ __('Profile Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
@@ -18,9 +18,15 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('name', $user->first_name)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+        </div>
+
+        <div>
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('name', $user->last_name)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
         </div>
 
         <div>
@@ -48,7 +54,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button class="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transition-all whitespace-nowrap">{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p

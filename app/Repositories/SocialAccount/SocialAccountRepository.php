@@ -15,9 +15,6 @@ class SocialAccountRepository
         $socialAccount->provider = $provider;
         $socialAccount->provider_id = $socialAccountData['provider']->id ?? $socialAccountData['id'];
         $socialAccount->provider_user_data = $socialAccountData['user'];
-        $socialAccount->access_token = $socialAccountData['token'];
-        $socialAccount->refresh_token = $socialAccountData['refreshToken'];
-        $socialAccount->expires_at = now()->addSeconds($socialAccountData['expiresIn']);
         $socialAccount->save();
     }
 

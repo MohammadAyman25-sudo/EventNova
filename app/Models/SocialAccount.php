@@ -11,9 +11,6 @@ class SocialAccount extends Model
         'provider',
         'provider_id',
         'provider_user_data',
-        'access_token',
-        'refresh_token',
-        'expires_at',
     ];
 
     protected $casts = [

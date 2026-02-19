@@ -22,8 +22,6 @@ class UserRoleService
         $userRecord->save();
         try {
             $userRecord->addMediaFromUrl($user['avatar'])
-                   ->preservingOriginal()
-                   ->withResponsiveImages()
                    ->toMediaCollection('avatar');
         } catch (\Exception $th) {
             Log::error('Failed to import avatar:'.$th->getMessage());
@@ -34,5 +32,7 @@ class UserRoleService
         event(new Registered($userRecord));
 
         Auth::login($userRecord);
+
+        return $userRecord;
     }
 }

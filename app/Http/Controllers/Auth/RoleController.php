@@ -12,8 +12,11 @@ class RoleController extends Controller
     public function create(UserRoleRequest $request)
     {
         try {
-            (new UserRoleService())->assignUserRole($request->getData());
-            return redirect()->route('interests');
+            $user = (new UserRoleService())->assignUserRole($request->getData());
+            if ($user->hasRole('attendee')) {
+                return redirect()->route('interests');
+            }
+            return redirect()->route('dashboard');
         } catch (\Exception $th) {
             Log::error($th->getMessage());
             return back()->withErrors([

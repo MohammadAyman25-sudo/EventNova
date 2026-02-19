@@ -18,15 +18,19 @@ class SocialAuthService
     {
         try {
             $user = Socialite::driver($provider)->user();
-
-            session(['pending_social_user'=>$user]);
-            session(['provider' => $provider]);
             
             $userRecord = (new SocialAccountRepository())->getUserByProviderId($user->id);
             if ($userRecord) {
                 Auth::login($userRecord);
                 return redirect()->route('dashboard');
             }
+
+            session(['pending_social_user'=>[
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->avatar,
+            ],
+                'provider' => $provider]);
             return redirect()->route('register-role');
         } catch (\Exception $th) {
             Log::error($th);

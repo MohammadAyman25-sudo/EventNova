@@ -4,7 +4,6 @@ use App\DTOs\UserDTO;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\ProfileController;
 use App\Mail\VerifyEmail;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['prefix' => 'kyc', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'kyc', 'middleware' => ['auth','attendee']], function() {
     Route::get('interests',[InterestsController::class, 'show'])->name('interests');
     Route::post('interests', [InterestsController::class, 'store'])->name('submit.interest');
 });
