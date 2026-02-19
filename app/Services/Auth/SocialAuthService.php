@@ -25,12 +25,15 @@ class SocialAuthService
                 return redirect()->route('dashboard');
             }
 
-            session(['pending_social_user'=>[
+            session([
+            'pending_social_user'=>[
+                'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
                 'avatar' => $user->avatar,
+                'user' => $user->user,
             ],
-                'provider' => $provider]);
+            'provider' => $provider]);
             return redirect()->route('register-role');
         } catch (\Exception $th) {
             Log::error($th);
