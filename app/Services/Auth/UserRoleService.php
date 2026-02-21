@@ -29,9 +29,9 @@ class UserRoleService
 
         (new SocialAccountRepository())->create($userRecord, $provider, $user);
 
-        // event(new Registered($userRecord));
+        session()->forget(['pending_social_user', 'provider']);
 
-        Auth::login($userRecord);
+        Auth::login($userRecord, true);
 
         return $userRecord;
     }

@@ -26,7 +26,7 @@
                 <!-- Page Content -->
                 <main>
                     <div class="pt-24 pb-16 px-4">
-                        <div class="max-w-5xl mx-auto">
+                        <div>
                             {{ $slot }}
                         </div>
                     </div>

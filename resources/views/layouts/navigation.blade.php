@@ -44,7 +44,7 @@
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-pink-600">
                                 @if (Auth::user()->hasMedia('avatar'))
-                                    <img src="{{ Auth::user()->getFirstMediaUrl('avatar') }}" alt="Profile Picture" class="rounded-full">
+                                    <img src="{{ Auth::user()->getFirstMediaUrl('avatar', 'thumb') }}" alt="Profile Picture" class="rounded-full">
                                 @else
                                     <span class="text-white font-black text-xl">{{ strtoupper(Auth::user()->first_name[0].Auth::user()->last_name[0]) }}</span>
                                 @endif
@@ -53,7 +53,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('public.profile')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -99,7 +99,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('public.profile')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 

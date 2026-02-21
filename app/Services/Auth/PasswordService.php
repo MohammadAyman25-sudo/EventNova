@@ -3,7 +3,6 @@
 namespace App\Services\Auth;
 
 use App\DTOs\Auth\Password\ResetPasswordRequestDTO;
-use Illuminate\Support\Facades\Log;
 
 class PasswordService
 {

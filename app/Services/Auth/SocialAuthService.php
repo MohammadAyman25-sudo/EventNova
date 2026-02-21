@@ -21,7 +21,7 @@ class SocialAuthService
             
             $userRecord = (new SocialAccountRepository())->getUserByProviderId($user->id);
             if ($userRecord) {
-                Auth::login($userRecord);
+                Auth::login($userRecord, true);
                 return redirect()->route('dashboard');
             }
 
