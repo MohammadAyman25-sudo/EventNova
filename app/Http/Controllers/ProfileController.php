@@ -14,7 +14,7 @@ class ProfileController extends Controller
 
     public function show(Request $request): View
     {
-        return view('profile.public_profile');
+        return view('profile.profile');
     }
 
     /**
