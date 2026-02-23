@@ -1,6 +1,10 @@
 <x-app-layout>
     @include('profile.partials.user-info')
     @include('profile.partials.user-stats')
-    @include('profile.partials.user-list-window')
+    @if (request()->user()->hasRole('attendee'))
+        @include('profile.partials.attendee-user-list-window')
+    @else
+        @include('profile.partials.organizer-user-list-window')
+    @endif
 </x-app-layout>
 <x-landing.sections.footer />
