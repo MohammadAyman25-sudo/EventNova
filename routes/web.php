@@ -1,9 +1,7 @@
 <?php
 
-use App\DTOs\UserDTO;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\ProfileController;
-use App\Mail\VerifyEmail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
