@@ -28,7 +28,7 @@ jobs:
         run: composer install --no-dev --optimize-autoloader
 
       - name: Install NPM dependencies
-        run: npm install --production
+        run: npm install
 
       - name: Build assets
         run: npm run build
@@ -48,7 +48,7 @@ jobs:
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
             
-            npm install --production
+            npm install
             npm run build
             
             php artisan cache:clear
