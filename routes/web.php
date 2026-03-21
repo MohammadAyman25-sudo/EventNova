@@ -27,20 +27,4 @@ Route::group(['prefix' => 'kyc', 'middleware' => ['auth','attendee']], function(
     Route::post('interests', [InterestsController::class, 'store'])->name('submit.interest');
 });
 
-// Route::view('web/test-mail', 'emails.verify-email', [
-//     'user' => UserDTO::from([
-//         'full_name' => 'Test User',
-//         'email' => 'mohammad@m-ayman.com',
-//     ]),
-//     'verificationUrl' => env('APP_URL').'/verify-email/10/'.Str::random(32),
-// ]);
-
-// Route::get('/test-mail', function () {
-//     Mail::to('mohammad@m-ayman.com')->send(new VerifyEmail(UserDTO::from([
-//         'full_name' => 'Test User',
-//         'email' => 'mohammad@m-ayman.com',
-//     ])));
-//     return 'Email Sent';
-// });
-
 require __DIR__.'/auth.php';
