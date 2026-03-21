@@ -44,7 +44,7 @@ jobs:
           script: |
             cd /var/www/eventnova/staging
             git reset --hard
-            git pull orign development
+            git pull origin development
 
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
