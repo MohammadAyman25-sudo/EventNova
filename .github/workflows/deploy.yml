@@ -43,7 +43,7 @@ jobs:
           script: |
             cd /var/www/eventnova/production
             git reset --hard
-            git pull orign main
+            git pull origin main
 
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
