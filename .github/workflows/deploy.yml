@@ -2,9 +2,9 @@ name: Deploy Eventnova
 on:
   push:
     branches:
-      - development
+      - main
 
-job:
+jobs:
   deploy:
     runs-on: ubuntu-latest
 
@@ -41,7 +41,7 @@ job:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            cd /var/www/eventnova/staging
+            cd /var/www/eventnova/production
             git reset --hard
             git pull orign development
 
