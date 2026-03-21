@@ -1,6 +1,6 @@
 name: Laravel Code Check
 
-on: [push]
+on: [pull-request]
 jobs:
   laravel-syntax-and-security-check:
     runs-on: ubuntu-latest
