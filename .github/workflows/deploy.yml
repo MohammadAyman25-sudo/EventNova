@@ -1,0 +1,61 @@
+name: Deploy Eventnova
+
+on:
+  push:
+    branches:
+      - development
+
+job:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, bcmath, intl, gd, zip
+      
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/eventnova/staging
+            git reset --hard
+            git pull orign development
+
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            
+            npm ci
+            npm run build
+            
+            php artisan cache:clear
+
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            sudo systemctl reload nginx
