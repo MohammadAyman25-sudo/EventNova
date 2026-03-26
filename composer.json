@@ -18,6 +18,7 @@
         "mcamara/laravel-localization": "^2.3",
         "pxlrbt/filament-excel": "^3.3",
         "resend/resend-laravel": "^1.1",
+        "sentry/sentry-laravel": "^4.24",
         "shetabit/payment": "^6.3",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-data": "^4.18",
