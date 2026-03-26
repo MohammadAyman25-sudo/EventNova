@@ -42,6 +42,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
+            echo "connected"
             cd /var/www/eventnova/staging
             git reset --hard
             git pull origin development
