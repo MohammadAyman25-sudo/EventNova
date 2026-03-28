@@ -33,7 +33,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'notify_weekly_digest',
         'notify_trending',
         'notification_frequency',
-        'notification_channels'
+        'notification_channels',
+        'available_balance',
+        'pending_balance',
     ];
 
     public function sendPasswordResetNotification($token)
