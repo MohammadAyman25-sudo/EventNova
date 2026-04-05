@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckAttendeeMiddleware;
+use App\Http\Middleware\CheckOrganizerMiddleware;
 use App\Http\Middleware\SocialiteRegisteration;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -17,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'socialite.registration' => SocialiteRegisteration::class,
             'attendee' => CheckAttendeeMiddleware::class,
+            'organizer' => CheckOrganizerMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

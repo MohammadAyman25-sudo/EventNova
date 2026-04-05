@@ -37,7 +37,7 @@ class RolesAndPermissionsSeeder extends Seeder
             Permission::firstOrCreate(['name' => $permission]);
         }
 
-        $superAdmin = Role::firstOrCreate(['name' => 'super-admin']);
+        // $superAdmin = Role::firstOrCreate(['name' => 'super-admin']);
         $organizer = Role::firstOrCreate(['name' => 'organizer']);
         $attendee = Role::firstOrCreate(['name' => 'attendee']);
 
@@ -50,7 +50,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'check-in-attendees',
         ]);
 
-        $superAdmin->givePermissionTo(Permission::all());
+        // $superAdmin->givePermissionTo(Permission::all());
         $attendee->givePermissionTo(['view-events']);
     }
 }

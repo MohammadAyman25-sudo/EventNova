@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
             return redirect(route('verify-email', absolute: false));
         } catch (\Throwable $th) {
             Log::error('Registration Error: ' . $th->getMessage());
+            \Sentry\captureException($th);
             return redirect()->back()->withInput()->withErrors(['registration_error' => 'An error occurred during registration. Please try again.']);
         }
     }

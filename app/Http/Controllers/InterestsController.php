@@ -16,6 +16,7 @@ class InterestsController extends Controller
             return redirect()->route('dashboard');
         } catch (\Exception $th) {
             Log::error($th->getMessage());
+            \Sentry\captureException($th);
             return back()->with('interests', 'something went wrong');
         }
     }

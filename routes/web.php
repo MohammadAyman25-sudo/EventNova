@@ -27,4 +27,9 @@ Route::group(['prefix' => 'kyc', 'middleware' => ['auth','attendee']], function(
     Route::post('interests', [InterestsController::class, 'store'])->name('submit.interest');
 });
 
+Route::group(['prefix' => 'kyc', 'middleware' => ['auth','organizer']], function() {
+    Route::get('onboarding',[InterestsController::class, 'show'])->name('onboarding');
+    Route::post('onboarding', [InterestsController::class, 'store'])->name('submit.onboarding');
+});
+
 require __DIR__.'/auth.php';
