@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dropColumn(['order_number', 'discount_amount', 'currency', 'paid_at', 'customer_details']);
             $table->integer('status')->default(OrderStatusEnum::PENDING)->change();
             $table->decimal('total_amount', 10, 3)->default(0)->change();
-            $table->integer('payment_methods')->default(PaymentMethodEnum::VISA);
+            $table->integer('payment_method')->default(PaymentMethodEnum::VISA);
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('orders', function(Blueprint $table){
-            $table->dropColumn(['payment_methods']);
+            $table->dropColumn(['payment_method']);
             $table->string('status')->default('pending')->change();
             $table->string('order_number')->unique();
             $table->foreignId('event_id')->constrained('events', 'id')->cascadeOnDelete();

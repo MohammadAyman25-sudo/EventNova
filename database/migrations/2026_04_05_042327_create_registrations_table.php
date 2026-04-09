@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_categories', function (Blueprint $table) {
+        Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories', 'id')->cascadeOnDelete();
-            $table->foreignId('event_id')->constrained('events', 'id')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('ticket_id')->constrained('tickets')->cascadeOnDelete();
+            $table->text('qrcode');
+            $table->datetime('checked_in_at')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_categories');
+        Schema::dropIfExists('registrations');
     }
 };

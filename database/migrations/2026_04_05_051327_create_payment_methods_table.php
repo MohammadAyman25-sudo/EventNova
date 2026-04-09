@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->nullable();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->integer('gateway');
             $table->integer('type');
             $table->integer('purpose');
             $table->text('gateway_token');
-            $table->json('metatdata');
+            $table->json('metadata');
             $table->boolean('is_default');
             $table->timestamps();
         });
