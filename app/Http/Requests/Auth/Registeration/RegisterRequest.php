@@ -27,6 +27,7 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this);
         return [
             'first_name' => 'required|regex:/^[a-zA-Z]+$/',
             'last_name' => 'required|regex:/^[a-zA-Z]+$/',

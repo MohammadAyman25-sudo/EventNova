@@ -16,7 +16,7 @@ class RoleController extends Controller
             if ($user->hasRole('attendee')) {
                 return redirect()->route('interests');
             }
-            return redirect()->route('dashboard');
+            return redirect()->route('onboarding');
         } catch (\Exception $th) {
             Log::error($th->getMessage());
             \Sentry\captureException($th);

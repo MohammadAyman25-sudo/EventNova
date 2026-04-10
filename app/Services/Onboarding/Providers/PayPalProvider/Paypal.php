@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Onboarding\Providers\CardProvider\Providers;
+namespace App\Services\Onboarding\Providers\PayPalProvider;
 
 use App\Interfaces\Payments\PaymentProviderInteface;
 use App\Interfaces\Payouts\PayoutProviderInterface;
 
-class PayMobService implements PaymentProviderInteface, PayoutProviderInterface
+class Paypal implements PaymentProviderInteface, PayoutProviderInterface
 {
   public function createPayment()
   {

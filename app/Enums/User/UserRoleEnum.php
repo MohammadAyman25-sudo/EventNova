@@ -2,9 +2,9 @@
 
 namespace App\Enums\User;
 
-enum UserRoleEnum:int
+enum UserRoleEnum:string
 {
-    case ORGANIZER = 0;
+    case ORGANIZER = 'organizer';
 
-    case ATTENDEE = 1;
+    case ATTENDEE = 'attendee';
 }

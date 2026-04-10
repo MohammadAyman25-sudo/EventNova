@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Services\Onboarding\Providers\CardProvider\Providers;
+namespace App\Services\Onboarding\Providers\MobileWalletProvider;
 
 use App\Interfaces\Payments\PaymentProviderInteface;
 use App\Interfaces\Payouts\PayoutProviderInterface;
 
-class PayMobService implements PaymentProviderInteface, PayoutProviderInterface
+class MobileWalletProvider implements PaymentProviderInteface, PayoutProviderInterface
 {
-  public function createPayment()
+  public function getPaymentDetails()
   {
     throw new \Exception('Not implemented');
   }
 
-  public function getPaymentDetails()
+  public function createPayment()
   {
     throw new \Exception('Not implemented');
   }
