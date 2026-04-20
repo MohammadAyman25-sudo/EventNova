@@ -33,7 +33,7 @@ class EventController extends Controller
         try {
             $newEvent = (new EventService())->createEvent($request->user(), $request->getData());
             return redirect()->route('event.details', ['event' => $newEvent->id])
-                ->with("success", "event created successfully!!!");
+                ->with("success", trans("event.create.success"));
         } catch (\Exception $exception) {
             \Sentry\captureException($exception);
             Log::error("Error Creating Event: {$exception->getMessage()}");
@@ -46,7 +46,7 @@ class EventController extends Controller
         try {
             (new EventService())->updateEvent($request->user(), $event, $request->getData());
             return redirect()->route('event.details', ['event' => $event->id])
-                ->with('success', 'event updated successfully!!!');
+                ->with('success', trans("event.update.success"));
         } catch (\Exception $exception) {
             \Sentry\captureException($exception);
             Log::error("Error Updating Event: {$exception->getMessage()}");
@@ -58,7 +58,7 @@ class EventController extends Controller
     {
         try {
             (new EventService())->deleteEvent($request->user(), $event);
-            return back()->with("message", "event deleted successfully");
+            return back()->with("message", trans("event.delete.success"));
         } catch (\Exception $exception) {
             \Sentry\captureException($exception);
             Log::error("Error Deleting Event:{$exception->getMessage()}");
