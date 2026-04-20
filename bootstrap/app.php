@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->validateCsrfTokens([
+            'webhook/stripe',
+        ]);
         $middleware->alias([
             'socialite.registration' => SocialiteRegisteration::class,
             'attendee' => CheckAttendeeMiddleware::class,

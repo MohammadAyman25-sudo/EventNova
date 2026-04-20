@@ -35,8 +35,8 @@ class SocialAuthService
             ],
             'provider' => $provider]);
             return redirect()->route('register-role');
-        } catch (\Exception $th) {
-            Log::error($th);
+        } catch (\Exception $exception) {
+            Log::error($exception);
             return redirect('/login')->with('error', 'Authentication Failed');
         }
     }

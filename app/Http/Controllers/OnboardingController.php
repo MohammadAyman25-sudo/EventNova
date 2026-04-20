@@ -15,9 +15,9 @@ class OnboardingController extends Controller
         try {
             (new OnboardingService())->setUserInterests($request->user(), $request->getData());
             return redirect()->route('dashboard');
-        } catch (\Exception $th) {
-            Log::error($th->getMessage());
-            \Sentry\captureException($th);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            \Sentry\captureException($exception);
             return back()->with('onboarding', 'something went wrong');
         }
     }

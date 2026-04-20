@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests;
 
-use App\DTOs\Event\CreateNewEventDTO;
+use App\DTOs\Event\UpdateEventDTO;
 use App\Enums\Event\EventRefundPolicyEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelData\WithData;
 
-class CreateEventRequest extends FormRequest
+class UpdateEventRequest extends FormRequest
 {
     use WithData;
     /**
@@ -16,7 +16,7 @@ class CreateEventRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->hasRole('organizer');
+        return false;
     }
 
     /**
@@ -31,9 +31,7 @@ class CreateEventRequest extends FormRequest
             'description' => 'nullable|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'location' => 'nullable|array',
             'venue_name' => 'required|string',
-            'venue_address' => 'required_without:online_link|string',
             'online_link' => 'required_without:venue_address|url',
             'capacity'=>'required|integer|min:5',
             'banner_image' => 'required|image|mimes:jpg,png,jpeg,webp',
@@ -50,6 +48,6 @@ class CreateEventRequest extends FormRequest
 
     public function dataClass():string
     {
-        return CreateNewEventDTO::class;
+        return UpdateEventDTO::class;
     }
 }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Services\Onboarding\Providers\CardProvider\Providers\StripeService;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class OnboardingController extends Controller
 {
@@ -40,6 +42,12 @@ class OnboardingController extends Controller
 
     public function refresh()
     {
-        return  redirect()->route('stripe.dashboard');
+        return  redirect()->route('dashboard');
+    }
+
+    public function handle(Request $request)
+    {
+        Log::info('Request:', $request->toArray());
+        return $request;
     }
 }

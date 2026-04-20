@@ -17,11 +17,11 @@ class RoleController extends Controller
                 return redirect()->route('interests');
             }
             return redirect()->route('onboarding');
-        } catch (\Exception $th) {
-            Log::error($th->getMessage());
-            \Sentry\captureException($th);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            \Sentry\captureException($exception);
             return back()->withErrors([
-                'error' => $th->getMessage(),
+                'error' => $exception->getMessage(),
             ]);
         }
     }   

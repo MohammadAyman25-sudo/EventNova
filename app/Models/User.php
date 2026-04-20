@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'last_name',
         'email',
         'password',
+        'stripe_id',
         'theme',
         'notify_new_events',
         'notify_weekly_digest',
