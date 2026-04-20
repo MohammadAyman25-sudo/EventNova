@@ -53,7 +53,7 @@
 
                             <!-- Resend form -->
                             <div class="mt-10">
-                                <form method="POST" action="{{ route('verification.send') }}">
+                                <form method="POST" action="{{ route('verification.send', ['locale' => app()->getLocale()]) }}">
                                     @csrf
                                     <button type="submit"
                                             class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors font-medium">

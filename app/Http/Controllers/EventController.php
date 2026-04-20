@@ -32,8 +32,11 @@ class EventController extends Controller
     {
         try {
             $newEvent = (new EventService())->createEvent($request->user(), $request->getData());
-            return redirect()->route('event.details', ['event' => $newEvent->id])
-                ->with("success", trans("event.create.success"));
+            return response()->json([
+                'status'=> 'success',
+                'message'=>trans('event.created.success'),
+                'data' => $newEvent,
+            ]);
         } catch (\Exception $exception) {
             \Sentry\captureException($exception);
             Log::error("Error Creating Event: {$exception->getMessage()}");
@@ -45,7 +48,7 @@ class EventController extends Controller
     {
         try {
             (new EventService())->updateEvent($request->user(), $event, $request->getData());
-            return redirect()->route('event.details', ['event' => $event->id])
+            return redirect()->route('event.details', ['event' => $event->id, 'locale' => app()->getLocale()])
                 ->with('success', trans("event.update.success"));
         } catch (\Exception $exception) {
             \Sentry\captureException($exception);

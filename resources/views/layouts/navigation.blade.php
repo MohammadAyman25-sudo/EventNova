@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboard', ['locale' => app()->getLocale()]) }}">
                         <x-application-logo class="text-white text-lg sm:text-xl w-5 h-5" />
                     </a>
                 </div>
@@ -13,23 +13,23 @@
             <!-- Navigation Links -->
             <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                 @if(!auth()->check() || !auth()->user()->hasAnyRole(['organizer', 'super-admin']))
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                         {{ __('My Tickets') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                         {{ __('Browse Events') }}
                     </x-nav-link>
                 @elseif(auth()->user()->hasRole('organizer'))
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                         {{ __('Organizer') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                         {{ __('My Events') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                         {{ __('New Event') }}
                     </x-nav-link>
                 @endif
@@ -53,15 +53,15 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('public.profile')">
+                        <x-dropdown-link :href="route('public.profile', ['locale' => app()->getLocale()])">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logout', ['locale' => app()->getLocale()]) }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link :href="route('logout', ['locale' => app()->getLocale()])"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
@@ -86,7 +86,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard', ['locale' => app()->getLocale()])" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
@@ -99,15 +99,15 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('public.profile')">
+                <x-responsive-nav-link :href="route('public.profile', ['locale' => app()->getLocale()])">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout', ['locale' => app()->getLocale()]) }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
+                    <x-responsive-nav-link :href="route('logout', ['locale' => app()->getLocale()])"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}

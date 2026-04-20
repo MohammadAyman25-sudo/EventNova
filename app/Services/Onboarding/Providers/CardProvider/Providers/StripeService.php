@@ -27,8 +27,8 @@ class StripeService implements PaymentProviderInteface, PayoutProviderInterface
   {
     return AccountLink::create([
       'account' => $accountId,
-      'refresh_url' => route('stripe.refresh'),
-      'return_url' => route('stripe.return'),
+      'refresh_url' => route('stripe.refresh', ['locale' => app()->getLocale()]),
+      'return_url' => route('stripe.return', ['locale' => app()->getLocale()]),
       'type' => 'account_onboarding',
     ]);
   }

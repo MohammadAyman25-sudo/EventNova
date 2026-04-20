@@ -14,7 +14,7 @@ class OnboardingController extends Controller
     {
         try {
             (new OnboardingService())->setUserInterests($request->user(), $request->getData());
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard', ['locale' => app()->getLocale()]);
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             \Sentry\captureException($exception);

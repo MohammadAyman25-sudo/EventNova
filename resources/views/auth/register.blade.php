@@ -1,5 +1,5 @@
 <x-guest-layout title="Create Account" paragraph="Join EventNova today">
-    <form method="POST" action="{{ route('register') }}" class="space-y-6">
+    <form method="POST" action="{{ route('register', ['locale' => app()->getLocale()]) }}" class="space-y-6">
         @csrf
 
         <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 !mt-0">
@@ -65,7 +65,7 @@
         <x-auth.third-party-auth text="Or continue with" :thirdParties="[['icon' => 'google', 'title' => 'Google', 'color'=>'fill-red-500'], ['icon'=>'facebook', 'title'=>'Facebook', 'color' => 'text-blue-600']]"/>
         <p class="text-center text-gray-600 dark:text-gray-300 mt-6">
             Already have an account?
-            <a href="{{ route('login') }}" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">Sign In</a>
+            <a href="{{ route('login', ['locale' => app()->getLocale()]) }}" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">Sign In</a>
         </p>
     </form>
 </x-guest-layout>

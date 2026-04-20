@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckAttendeeMiddleware
+class SetLocale
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,11 @@ class CheckAttendeeMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user()->hasRole('attendee')) {
-            return redirect()->route('dashboard', ['locale' => app()->getLocale()]);
+        $locale = $request->route('locale');
+        if (!in_array($locale, ['en', 'ar'])) {
+            $locale = config('app.locale');
         }
+        app()->setLocale($locale);
         return $next($request);
     }
 }

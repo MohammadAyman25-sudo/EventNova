@@ -14,9 +14,9 @@ class RoleController extends Controller
         try {
             $user = (new UserRoleService())->assignUserRole($request->getData());
             if ($user->hasRole('attendee')) {
-                return redirect()->route('interests');
+                return redirect()->route('interests', ['locale' => app()->getLocale()]);
             }
-            return redirect()->route('onboarding');
+            return redirect()->route('onboarding', ['locale' => app()->getLocale()]);
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             \Sentry\captureException($exception);

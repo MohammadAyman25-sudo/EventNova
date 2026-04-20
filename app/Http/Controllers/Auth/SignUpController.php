@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class SignUpController extends Controller
 {
     /**
      * Display the registration view.
@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     {
         try {
             (new RegisterationService())->register($request->getData());
-            return redirect(route('verify-email', absolute: false));
+            return redirect(route('verify-email', ['locale' => app()->getLocale()], absolute: false));
         } catch (\Throwable $exception) {
             Log::error('Registration Error: ' . $exception->getMessage());
             \Sentry\captureException($exception);

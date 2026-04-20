@@ -10,7 +10,7 @@
         <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-4">What Interests You?</h1>
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Select your interests so we can notify you about events you'll love. Choose at least 3 categories.</p>
     </div>
-    <form action="{{ route('submit.interest') }}" method="POST">
+    <form action="{{ route('submit.interest', ['locale' => app()->getLocale()]) }}" method="POST">
         @csrf
         <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 mb-8">
             @if (isset($errors))
