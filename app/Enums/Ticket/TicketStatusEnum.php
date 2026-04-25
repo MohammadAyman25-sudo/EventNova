@@ -2,14 +2,14 @@
 
 namespace App\Enums\Ticket;
 
-enum TicketStatusEnum:string
+enum TicketStatusEnum:int
 {
-    case CONFIRMED = 'confirmed';
-    case REFUNDED = 'refunded';
-    case CANCELLED = 'cancelled';
-    case PENDING = 'pending';
-    case CHECKED_IN = 'checked_in';
-    case FAILED = 'failed';
+    case CONFIRMED = 0;
+    case REFUNDED = 1;
+    case CANCELLED = 2;
+    case PENDING = 3;
+    case CHECKED_IN = 4;
+    case FAILED = 5;
 
     public static function toArray()
     {

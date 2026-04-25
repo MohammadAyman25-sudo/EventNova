@@ -4,6 +4,6 @@ namespace App\Enums\Notification;
 
 enum NotificationTypesEnum:int
 {
-    case EMAIL = 1;
-    case PUSH_NOTIFICATION = 2; 
+    case EMAIL = 0;
+    case PUSH_NOTIFICATION = 1; 
 }

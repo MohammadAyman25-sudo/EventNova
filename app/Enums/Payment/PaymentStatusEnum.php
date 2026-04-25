@@ -2,14 +2,14 @@
 
 namespace App\Enums\Payment;
 
-enum PaymentStatusEnum:string
+enum PaymentStatusEnum:int
 {
-    case PENDING = 'pending';
-    case REQUIRES_ACTION = 'requires_action';
-    case PROCESSING = 'processing';
-    case SUCCEEDED = 'succeeded';
-    case FAILED = 'failed';
-    case CANCELLED = 'cancelled';
-    case REFUNDED = 'refunded';
-    case PARTIALLY_REFUNDED = 'partially_refunded';
+    case PENDING = 0;
+    case REQUIRES_ACTION = 1;
+    case PROCESSING = 2;
+    case SUCCEEDED = 3;
+    case FAILED = 4;
+    case CANCELLED = 5;
+    case REFUNDED = 6;
+    case PARTIALLY_REFUNDED = 7;
 }

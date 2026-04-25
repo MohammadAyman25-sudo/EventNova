@@ -14,13 +14,14 @@ class RoleController extends Controller
         try {
             $user = (new UserRoleService())->assignUserRole($request->getData());
             if ($user->hasRole('attendee')) {
-                return redirect()->route('interests');
+                return redirect()->route('interests', []);
             }
-            return redirect()->route('dashboard');
-        } catch (\Exception $th) {
-            Log::error($th->getMessage());
+            return redirect()->route('onboarding', []);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            \Sentry\captureException($exception);
             return back()->withErrors([
-                'error' => $th->getMessage(),
+                'error' => $exception->getMessage(),
             ]);
         }
     }   

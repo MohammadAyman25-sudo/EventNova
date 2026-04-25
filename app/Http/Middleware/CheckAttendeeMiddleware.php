@@ -16,7 +16,7 @@ class CheckAttendeeMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->user()->hasRole('attendee')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard', []);
         }
         return $next($request);
     }
