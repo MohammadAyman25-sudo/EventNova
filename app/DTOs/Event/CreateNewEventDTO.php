@@ -2,6 +2,7 @@
 
 namespace App\DTOs\Event;
 
+use Illuminate\Http\UploadedFile;
 use Spatie\LaravelData\Data;
 
 class CreateNewEventDTO extends Data
@@ -15,7 +16,7 @@ class CreateNewEventDTO extends Data
   public ?string $venue_address;
   public ?string $online_link;
   public int $capacity;
-  public string $banner_image;
+  public UploadedFile $banner_image;
   public int $refund_policy;
   public ?int $refund_days_before;
   public int $refund_percentage;  

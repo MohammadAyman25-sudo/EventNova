@@ -27,8 +27,8 @@
             <!-- Settings Dropdown -->
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <x-theme-toggler />
-                <a href="{{ route('login', ['locale' => app()->getLocale()]) }}" class="hidden sm:inline-block px-4 lg:px-5 py-2 sm:py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all whitespace-nowrap cursor-pointer capitalize">Sign in</a>
-                <a href="{{ route('register', ['locale' => app()->getLocale()]) }}" class="px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:shadow-lg transition-all whitespace-nowrap cursor-pointer">Get Started</a>
+                <a href="{{ route('login', []) }}" class="hidden sm:inline-block px-4 lg:px-5 py-2 sm:py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all whitespace-nowrap cursor-pointer capitalize">Sign in</a>
+                <a href="{{ route('register', []) }}" class="px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:shadow-lg transition-all whitespace-nowrap cursor-pointer">Get Started</a>
                 <!-- Hamburger -->
                 <button @click="open = ! open" class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg transition-colors cursor-pointer text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                     <x-icons.menu x-show="!open" class="text-xl" aria-hidden="true"/>
@@ -50,7 +50,7 @@
             <x-responsive-nav-link :href="'#testimonials'" >
                 {{__('Testimonials')}}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('login', ['locale' => app()->getLocale()])" class="text-center">{{ __('Sign In') }}</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('login', [])" class="text-center">{{ __('Sign In') }}</x-responsive-nav-link>
         </div>
     </div>
 </nav>

@@ -24,13 +24,14 @@ class Event extends Model
         'refund_policy',
         'refund_days_before',
         'refund_percentage',
-        'allow_refund_after_start',
+        'allow_refunds_after_start',
     ];
 
     protected $casts = [
         'start_date' => 'datetime',
         'end_date' => 'datetime',
         'location' => 'array',
+        'allow_refunds_after_start' => 'boolean',
     ];
 
     public function categories()
@@ -41,5 +42,10 @@ class Event extends Model
     public function organizer()
     {
         return $this->belongsTo(User::class, 'organizer_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

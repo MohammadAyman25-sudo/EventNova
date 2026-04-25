@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use App\Enums\Event\EventStatusEnum;
 use App\Models\Event;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class EventPolicy
 {
@@ -21,9 +21,9 @@ class EventPolicy
      */
     public function view(User $user, Event $event): bool
     {
-        return $event->is_published || 
-               $user->hasRole('super-admin') || 
-               $user->id === $event->organizer_id;
+        return (int) $event->status === EventStatusEnum::PUBLISHED->value
+               || $user->hasRole('super-admin')
+               || $user->id === $event->organizer_id;
     }
 
     /**
@@ -50,9 +50,9 @@ class EventPolicy
      */
     public function delete(User $user, Event $event): bool
     {
-        return $user->hasPermissionTo('delete-own-events') || 
-               $user->hasRole('super-admin') || 
-               $user->id === $event->oranizer_id;
+        return $user->hasPermissionTo('delete-own-events') ||
+               $user->hasRole('super-admin') ||
+               $user->id === $event->organizer_id;
     }
 
     public function publish (User $user, Event $event): bool

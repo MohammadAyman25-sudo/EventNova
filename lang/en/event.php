@@ -1,6 +1,12 @@
 <?php
 
 return [
+  'unauthorized' => [
+    'create' => 'You are not allowed to create events.',
+    'update' => 'You are not allowed to update this event.',
+    'delete' => 'You are not allowed to delete this event.',
+  ],
+
   'created' => [
     'success' => 'Your event has been created successfully.',
     'error' => 'We couldn’t create your event. Please try again.',

@@ -34,7 +34,7 @@ class SignUpController extends Controller
     {
         try {
             (new RegisterationService())->register($request->getData());
-            return redirect(route('verify-email', ['locale' => app()->getLocale()], absolute: false));
+            return redirect(route('verify-email', [], absolute: false));
         } catch (\Throwable $exception) {
             Log::error('Registration Error: ' . $exception->getMessage());
             \Sentry\captureException($exception);

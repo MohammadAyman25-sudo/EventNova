@@ -22,7 +22,7 @@ class SocialAuthService
             $userRecord = (new SocialAccountRepository())->getUserByProviderId($user->id);
             if ($userRecord) {
                 Auth::login($userRecord, true);
-                return redirect()->route('dashboard', ['locale' => app()->getLocale()]);
+                return redirect()->route('dashboard', []);
             }
 
             session([
@@ -34,7 +34,7 @@ class SocialAuthService
                 'user' => $user->user,
             ],
             'provider' => $provider]);
-            return redirect()->route('register-role', ['locale' => app()->getLocale()]);
+            return redirect()->route('register-role', []);
         } catch (\Exception $exception) {
             Log::error($exception);
             return redirect('/login')->with('error', 'Authentication Failed');

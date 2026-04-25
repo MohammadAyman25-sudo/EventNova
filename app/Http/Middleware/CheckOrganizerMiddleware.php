@@ -16,7 +16,7 @@ class CheckOrganizerMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->user()->hasRole('organizer')) {
-            return redirect()->route('dashboard', ['locale' => app()->getLocale()]);
+            return redirect()->route('dashboard', []);
         }
         return $next($request);
     }

@@ -33,10 +33,10 @@ class CreateEventRequest extends FormRequest
             'end_date' => 'required|date|after:start_date',
             'location' => 'nullable|array',
             'venue_name' => 'required|string',
-            'venue_address' => 'required_without:online_link|string',
-            'online_link' => 'required_without:venue_address|url',
+            'venue_address' => 'nullable|required_without:online_link|string',
+            'online_link' => 'nullable|required_without:venue_address|url',
             'capacity'=>'required|integer|min:5',
-            'banner_image' => 'required|image|mimes:jpg,png,jpeg,webp',
+            'banner_image' => 'required|image|mimes:jpg,png,jpeg,webp|max:2048',
             'refund_policy' => [
                 'required',
                 'integer',

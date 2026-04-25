@@ -13,7 +13,7 @@ class InterestsController extends Controller
     {
         try {
             (new InterestService())->setUserInterests($request->user(), $request->getData());
-            return redirect()->route('dashboard', ['locale' => app()->getLocale()]);
+            return redirect()->route('dashboard', []);
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             \Sentry\captureException($exception);

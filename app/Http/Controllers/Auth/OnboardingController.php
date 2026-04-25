@@ -36,13 +36,13 @@ class OnboardingController extends Controller
 
     public function return()
     {
-        return redirect()->route('dashboard', ['locale' => app()->getLocale()])
+        return redirect()->route('dashboard', [])
                 ->with('success', 'Onboarding submitted. We will verify your account shortly.');
     }
 
     public function refresh()
     {
-        return  redirect()->route('dashboard',['locale' => app()->getLocale()]);
+        return  redirect()->route('dashboard',[]);
     }
 
     public function handle(Request $request)

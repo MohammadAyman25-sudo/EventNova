@@ -28,11 +28,13 @@ Route::group(['prefix'=>'{locale}'], function(){
     Route::middleware('auth')->group(function (){
         Route::get('/profile', [ProfileController::class, 'show'])->name('public.profile');
         // Events
-        Route::get('events', [EventController::class, ''])->name('explore.events');
-        Route::get('event/{event}', [EventController::class, ''])->name('event.details');
-        Route::post('event', [EventController::class, ''])->name('create.event');
-        Route::put('event/{id}', [EventController::class, ''])->name('update.event');
-        Route::delete('event/{id}', [EventController::class, ''])->name('delete.event');
+        Route::get('events', [EventController::class, 'index'])->name('explore.events');
+        Route::get('event/create', [EventController::class, 'create'])->name('event.create');
+        Route::get('event/{event}/edit', [EventController::class, 'edit'])->name('event.edit');
+        Route::get('event/{event}', [EventController::class, 'details'])->name('event.details');
+        Route::post('event', [EventController::class, 'store'])->name('create.event');
+        Route::put('event/{event}', [EventController::class, 'updateEvent'])->name('update.event');
+        Route::delete('event/{event}', [EventController::class, 'destroy'])->name('delete.event');
     });
 
     // Route::group(['prefix' => 'kyc', 'middleware' => ['auth','attendee']], function() {

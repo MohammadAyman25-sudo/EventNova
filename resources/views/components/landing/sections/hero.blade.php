@@ -16,7 +16,7 @@
                 From concerts to workshops, find and book amazing experiences happening near you. Create unforgettable memories with EventNova.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
-                <a href="{{route('register', ['locale' => app()->getLocale()])}}" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl hover:shadow-2xl hover:scale-105 transition-all whitespace-nowrap cursor-pointer flex items-center justify-center">
+                <a href="{{route('register', [])}}" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl hover:shadow-2xl hover:scale-105 transition-all whitespace-nowrap cursor-pointer flex items-center justify-center">
                     <x-icons.rocket class="mr-2"/>
                     <span>Start Exploring</span>
                 </a>

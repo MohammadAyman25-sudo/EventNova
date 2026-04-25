@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login', ['locale' => app()->getLocale()]) }}" class="space-y-6">
+    <form method="POST" action="{{ route('login', []) }}" class="space-y-6">
         @csrf
 
         <!-- Email Address -->
@@ -32,7 +32,7 @@
             </label>
             {{-- <button class="text-sm text-purple-600 hover:text-purple-700 font-semibold">Forgot Password?</button> --}}
             @if (Route::has('password.request'))
-                <a class="text-sm text-purple-600 hover:text-purple-700 font-semibold" href="{{ route('password.request', ['locale' => app()->getLocale()]) }}">
+                <a class="text-sm text-purple-600 hover:text-purple-700 font-semibold" href="{{ route('password.request', []) }}">
                     {{ __('Forgot Password?') }}
                 </a>
             @endif
@@ -45,6 +45,6 @@
     <x-auth.third-party-auth text="Or continue with" :thirdParties="[['icon' => 'google', 'title' => 'Google', 'color'=>'fill-red-500'], ['icon'=>'facebook', 'title'=>'Facebook', 'color' => 'text-blue-600']]"/>
     <p class="text-center text-gray-600 dark:text-gray-300 mt-6">
         Don't have an account?
-        <a href="{{ route('register', ['locale' => app()->getLocale()]) }}" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">Sign Up</a>
+        <a href="{{ route('register', []) }}" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">Sign Up</a>
     </p>
 </x-guest-layout>
