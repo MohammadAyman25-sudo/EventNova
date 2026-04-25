@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Enums\Event\EventStatusEnum;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class EventPolicy
 {
@@ -21,9 +22,7 @@ class EventPolicy
      */
     public function view(User $user, Event $event): bool
     {
-        return (int) $event->status === EventStatusEnum::PUBLISHED->value
-               || $user->hasRole('super-admin')
-               || $user->id === $event->organizer_id;
+        return true;
     }
 
     /**
@@ -31,8 +30,7 @@ class EventPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo('create-own-events') ||
-               $user->hasRole('super-admin');
+        return $user->hasPermissionTo('create-own-events');
     }
 
     /**
@@ -41,7 +39,6 @@ class EventPolicy
     public function update(User $user, Event $event): bool
     {
         return $user->hasPermissionTo('edit-own-events') ||
-               $user->hasRole('super-admin') || 
                $event->organizer_id === $user->id;
     }
 
@@ -51,8 +48,8 @@ class EventPolicy
     public function delete(User $user, Event $event): bool
     {
         return $user->hasPermissionTo('delete-own-events') ||
-               $user->hasRole('super-admin') ||
-               $user->id === $event->organizer_id;
+        $user->id === $event->organizer_id &&
+        EventStatusEnum::DRAFT->value === $event->status;
     }
 
     public function publish (User $user, Event $event): bool

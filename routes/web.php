@@ -32,9 +32,11 @@ Route::group(['prefix'=>'{locale}'], function(){
         Route::get('event/create', [EventController::class, 'create'])->name('event.create');
         Route::get('event/{event}/edit', [EventController::class, 'edit'])->name('event.edit');
         Route::get('event/{event}', [EventController::class, 'details'])->name('event.details');
+        Route::get('organizer/events', [EventController::class, 'organizerEvents'])->name('organizer.events')->middleware('organizer');
         Route::post('event', [EventController::class, 'store'])->name('create.event');
         Route::put('event/{event}', [EventController::class, 'updateEvent'])->name('update.event');
         Route::delete('event/{event}', [EventController::class, 'destroy'])->name('delete.event');
+        Route::patch('event/{event}/publish', [EventController::class, 'publish'])->name('event.publish'); 
     });
 
     // Route::group(['prefix' => 'kyc', 'middleware' => ['auth','attendee']], function() {

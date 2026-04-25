@@ -53,7 +53,12 @@ class EventService
 
   public function listEvents()
   {
-    return Event::paginate(25);
+    return Event::whereIn('status', [EventStatusEnum::PUBLISHED->value, EventStatusEnum::CANCELLED->value])->paginate(25);
+  }
+
+  public function listOrganizerEvents(User $user)
+  {
+    return Event::where('organizer_id', $user->id)->paginate(25);
   }
 
   public function updateEvent(User $user, Event $event, UpdateEventDTO $eventDTO, ?UploadedFile $newBanner = null): void
@@ -109,5 +114,14 @@ class EventService
       Storage::disk('public')->delete($event->banner_image);
     }
     $event->delete();
+  }
+
+  public function publishEvent(User $user, Event $event): void
+  {
+    if (! $user->can('publish', $event)) {
+      throw new Exception(trans('event.unauthorized.publish'));
+    }
+    $event->status = EventStatusEnum::PUBLISHED->value;
+    $event->save();
   }
 }

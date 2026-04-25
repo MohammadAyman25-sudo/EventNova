@@ -19,17 +19,17 @@
                     <x-nav-link :href="route('dashboard', [])" :active="request()->routeIs('dashboard')">
                         {{ __('My Tickets') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard', [])" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('explore.events', [])" :active="request()->routeIs('dashboard')">
                         {{ __('Browse Events') }}
                     </x-nav-link>
                 @elseif(auth()->user()->hasRole('organizer'))
                     <x-nav-link :href="route('dashboard', [])" :active="request()->routeIs('dashboard')">
                         {{ __('Organizer') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard', [])" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('organizer.events', [])" :active="request()->routeIs('dashboard')">
                         {{ __('My Events') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard', [])" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('event.create', [])" :active="request()->routeIs('dashboard')">
                         {{ __('New Event') }}
                     </x-nav-link>
                 @endif

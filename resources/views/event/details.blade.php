@@ -6,24 +6,52 @@
             </div>
         @endif
 
+        @php
+            $status        = \App\Enums\Event\EventStatusEnum::tryFrom((int) $event->status);
+            $isDraft       = $status === \App\Enums\Event\EventStatusEnum::DRAFT;
+            $statusLabel   = $status ? str_replace('_', ' ', $status->name) : $event->status;
+        @endphp
+
         <div class="mb-6 flex flex-wrap items-start justify-between gap-4">
             <div>
                 <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $event->title }}</h1>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                <p class="mt-1 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                     {{ __('Status') }}:
-                    @php
-                        $status = \App\Enums\Event\EventStatusEnum::tryFrom((int) $event->status);
-                    @endphp
-                    {{ $status ? str_replace('_', ' ', $status->name) : $event->status }}
+                    <span @class([
+                        'inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium',
+                        'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300' => $isDraft,
+                        'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300'     => !$isDraft,
+                    ])>
+                        {{ $statusLabel }}
+                    </span>
                 </p>
             </div>
+
             <div class="flex flex-wrap items-center gap-2">
+                {{-- Publish button — only visible when the event is a draft and the user can update it --}}
+                @if ($isDraft)
+                    @can('update', $event)
+                        <form method="POST" action="{{ route('event.publish', $event) }}">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit"
+                                    class="inline-flex items-center gap-2 rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                {{ __('Publish') }}
+                            </button>
+                        </form>
+                    @endcan
+                @endif
+
                 @can('update', $event)
                     <a href="{{ route('event.edit', $event) }}"
                        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
                         {{ __('Edit') }}
                     </a>
                 @endcan
+
                 @can('delete', $event)
                     <form id="delete-event-form" method="POST" action="{{ route('delete.event', $event) }}"
                           data-confirm-message="{{ e(__('Delete this event? This cannot be undone.')) }}">

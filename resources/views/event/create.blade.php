@@ -15,6 +15,9 @@
         <form id="event-create-form" method="POST" action="{{ route('create.event', []) }}" enctype="multipart/form-data" class="space-y-4">
             @csrf
 
+            {{-- Hidden status field – toggled by the submit buttons --}}
+            <input type="hidden" name="status" id="event-status-input" value="{{ old('status', \App\Enums\Event\EventStatusEnum::DRAFT->value) }}">
+
             <div>
                 <label for="title" class="block text-sm font-medium mb-1">Title *</label>
                 <input id="title" name="title" type="text" value="{{ old('title') }}" required class="w-full rounded border-gray-300">
@@ -81,6 +84,15 @@
             <div>
                 <label for="banner_image" class="block text-sm font-medium mb-1">Banner Image * (jpg, jpeg, png, webp)</label>
                 <input id="banner_image" name="banner_image" type="file" accept=".jpg,.jpeg,.png,.webp" required class="w-full rounded border-gray-300">
+
+                <div id="banner-preview-wrapper" class="hidden mt-3 relative w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/40" style="aspect-ratio: 16/5;">
+                    <img id="banner-preview" src="#" alt="Banner preview" class="w-full h-full object-cover">
+                    <button type="button" id="banner-remove" title="Remove image" class="absolute top-2 right-2 flex items-center justify-center w-7 h-7 rounded-full bg-black/50 text-white hover:bg-black/75 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 pointer-events-none" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <div>
@@ -112,24 +124,42 @@
                 </label>
             </div>
 
-            <div class="pt-2">
-                <button type="submit" class="inline-flex items-center rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
-                    Create Event
+            {{-- Action buttons --}}
+            <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button
+                    type="submit"
+                    id="btn-draft"
+                    class="inline-flex items-center gap-2 rounded border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                    </svg>
+                    {{ __('Save as DRAFT') }}
+                </button>
+
+                <button
+                    type="submit"
+                    id="btn-publish"
+                    class="inline-flex items-center gap-2 rounded bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    {{ __('Publish Event') }}
                 </button>
             </div>
         </form>
 
         <script>
             (function () {
-                const form = document.getElementById('event-create-form');
-                const venue = document.getElementById('venue_address');
+                // ── Venue / online-link constraint ──────────────────────────────
+                const form   = document.getElementById('event-create-form');
+                const venue  = document.getElementById('venue_address');
                 const online = document.getElementById('online_link');
                 if (!form || !venue || !online) return;
 
                 function syncVenueOnlineConstraint() {
                     const hasVenue = venue.value.trim().length > 0;
                     online.required = !hasVenue;
-                    venue.required = !online.value.trim();
+                    venue.required  = !online.value.trim();
                 }
 
                 venue.addEventListener('input', syncVenueOnlineConstraint);
@@ -137,7 +167,7 @@
                 syncVenueOnlineConstraint();
 
                 form.addEventListener('submit', function (e) {
-                    const hasVenue = venue.value.trim().length > 0;
+                    const hasVenue  = venue.value.trim().length > 0;
                     const hasOnline = online.value.trim().length > 0;
                     if (!hasVenue && !hasOnline) {
                         e.preventDefault();
@@ -146,6 +176,43 @@
                         return;
                     }
                     online.setCustomValidity('');
+                });
+
+                // ── DRAFT / Publish status toggle ───────────────────────────────
+                const statusInput  = document.getElementById('event-status-input');
+                const draftValue   = '{{ \App\Enums\Event\EventStatusEnum::DRAFT->value }}';
+                const publishValue = '{{ \App\Enums\Event\EventStatusEnum::PUBLISHED->value }}';
+
+                document.getElementById('btn-draft').addEventListener('click', function () {
+                    statusInput.value = draftValue;
+                });
+
+                document.getElementById('btn-publish').addEventListener('click', function () {
+                    statusInput.value = publishValue;
+                });
+
+                // ── Banner image preview ────────────────────────────────────────
+                const bannerInput    = document.getElementById('banner_image');
+                const previewWrapper = document.getElementById('banner-preview-wrapper');
+                const previewImg     = document.getElementById('banner-preview');
+                const removeBtn      = document.getElementById('banner-remove');
+
+                bannerInput.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        previewImg.src = e.target.result;
+                        previewWrapper.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                });
+
+                removeBtn.addEventListener('click', function () {
+                    bannerInput.value = '';
+                    previewImg.src = '#';
+                    previewWrapper.classList.add('hidden');
                 });
             })();
         </script>

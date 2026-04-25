@@ -31,6 +31,20 @@ class EventController extends Controller
         }
     }
 
+    public function organizerEvents(string $locale)
+    {
+        try {
+            $events = (new EventService())->listOrganizerEvents(auth()->user());
+
+            return view('event.explore', compact('events'));
+        } catch (\Exception $exception) {
+            \Sentry\captureException($exception);
+            Log::error("Error Listing Organizer Events: {$exception->getMessage()}");
+
+            return back()->withErrors(['message' => $exception->getMessage()]);
+        }
+    }
+
     public function details(string $locale, Event $event)
     {
         $this->authorize('view', $event);
@@ -93,6 +107,21 @@ class EventController extends Controller
             \Sentry\captureException($exception);
             Log::error("Error Deleting Event:{$exception->getMessage()}");
 
+            return back()->withErrors(['message' => $exception->getMessage()]);
+        }
+    }
+
+    public function publish(Request $request, string $locale, Event $event)
+    {
+        try {
+            (new EventService())->publishEvent($request->user(), $event);
+
+            return redirect()
+                ->route('event.details', ['event' => $event])
+                ->with('success', trans('event.published.success'));
+        } catch (\Exception $exception) {
+            \Sentry\captureException($exception);
+            Log::error("Error Publishing Event:{$exception->getMessage()}");
             return back()->withErrors(['message' => $exception->getMessage()]);
         }
     }

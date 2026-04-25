@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'title',
         'slug',
@@ -25,6 +27,7 @@ class Event extends Model
         'refund_days_before',
         'refund_percentage',
         'allow_refunds_after_start',
+        'deleted_at',
     ];
 
     protected $casts = [
