@@ -13,9 +13,10 @@ class InterestsController extends Controller
     {
         try {
             (new InterestService())->setUserInterests($request->user(), $request->getData());
-            return redirect()->route('dashboard');
-        } catch (\Exception $th) {
-            Log::error($th->getMessage());
+            return redirect()->route('dashboard', []);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            \Sentry\captureException($exception);
             return back()->with('interests', 'something went wrong');
         }
     }

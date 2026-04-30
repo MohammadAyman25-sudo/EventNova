@@ -2,9 +2,10 @@
 
 namespace App\Policies;
 
+use App\Enums\Event\EventStatusEnum;
 use App\Models\Event;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Log;
 
 class EventPolicy
 {
@@ -13,7 +14,7 @@ class EventPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('events.view-any');
     }
 
     /**
@@ -21,9 +22,10 @@ class EventPolicy
      */
     public function view(User $user, Event $event): bool
     {
-        return $event->is_published || 
-               $user->hasRole('super-admin') || 
-               $user->id === $event->organizer_id;
+        // Published events are visible to anyone with browse permission;
+        // owners can also see their own drafts/unpublished events.
+        return $user->hasPermissionTo('events.view-any') ||
+               ($user->hasPermissionTo('events.view-own') && $user->id === $event->organizer_id);
     }
 
     /**
@@ -31,8 +33,7 @@ class EventPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo('create-own-events') ||
-               $user->hasRole('super-admin');
+        return $user->hasPermissionTo('events.create');
     }
 
     /**
@@ -40,8 +41,7 @@ class EventPolicy
      */
     public function update(User $user, Event $event): bool
     {
-        return $user->hasPermissionTo('edit-own-events') ||
-               $user->hasRole('super-admin') || 
+        return $user->hasPermissionTo('events.edit-own') &&
                $event->organizer_id === $user->id;
     }
 
@@ -50,13 +50,32 @@ class EventPolicy
      */
     public function delete(User $user, Event $event): bool
     {
-        return $user->hasPermissionTo('delete-own-events') || 
-               $user->hasRole('super-admin') || 
-               $user->id === $event->oranizer_id;
+        return $user->hasPermissionTo('events.delete-own') &&
+               $user->id === $event->organizer_id &&
+               EventStatusEnum::DRAFT->value === $event->status;
     }
 
-    public function publish (User $user, Event $event): bool
+    public function publish(User $user, Event $event): bool
     {
-        return $this->update($user, $event);
+        return $user->hasPermissionTo('events.publish-own') &&
+               $user->id === $event->organizer_id;
+    }
+
+    /**
+     * Determine whether the user can save / favourite the event.
+     * Only attendees have this permission.
+     */
+    public function save(User $user, Event $event): bool
+    {
+        return $user->hasPermissionTo('events.save');
+    }
+
+    /**
+     * Determine whether the user can remove the event from their favourites.
+     * Only attendees have this permission.
+     */
+    public function unsave(User $user, Event $event): bool
+    {
+        return $user->hasPermissionTo('events.unsave');
     }
 }

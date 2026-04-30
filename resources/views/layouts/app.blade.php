@@ -1,5 +1,5 @@
     <!DOCTYPE html>
-    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
 
             <!-- Scripts -->
             @vite(['resources/css/app.css', 'resources/js/app.js'])
+            @stack('styles')
         </head>
         <body class="font-sans antialiased">
             <div class="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900">

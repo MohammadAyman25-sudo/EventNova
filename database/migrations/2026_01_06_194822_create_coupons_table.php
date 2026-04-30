@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\Coupon\CouponStatusEnum;
+use App\Enums\Coupon\CouponTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->string('type')->default(CouponStatusEnum::FIXED->value);
+            $table->string('type')->default(CouponTypeEnum::FIXED->value);
             $table->decimal('value', 10, 2);
             $table->integer('usage_limit')->nullable();
             $table->integer('used_count')->default(0);

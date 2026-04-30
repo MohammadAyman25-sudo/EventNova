@@ -19,6 +19,11 @@ class Category extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
+
     public function getGradientAttribute(): string
     {
         return match($this->color) {

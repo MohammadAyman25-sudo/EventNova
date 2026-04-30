@@ -23,8 +23,8 @@ class UserRoleService
         try {
             $userRecord->addMediaFromUrl($user['avatar'])
                    ->toMediaCollection('avatar');
-        } catch (\Exception $th) {
-            Log::error('Failed to import avatar:'.$th->getMessage());
+        } catch (\Exception $exception) {
+            Log::error('Failed to import avatar:'.$exception->getMessage());
         }
 
         (new SocialAccountRepository())->create($userRecord, $provider, $user);

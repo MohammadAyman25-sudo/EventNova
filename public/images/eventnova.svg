@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 220 220"
+     width="320"
+     height="320"
+     preserveAspectRatio="xMidYMid meet">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    svg {
+      display: block;
+    }
+
+    /* Light mode */
+    @media (prefers-color-scheme: light) {
+      svg { color: #111111; }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      svg { color: #ffffff; }
+    }
+
+    .text {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  </style>
+
+  <!-- ICON -->
+  <g transform="translate(55,20)"
+     stroke="currentColor"
+     stroke-width="3"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- Calendar body (NOW slightly visible even in bad contrast cases) -->
+    <rect x="0" y="20" width="110" height="90" rx="14"
+          fill="currentColor" opacity="0.04"/>
+
+    <!-- Calendar top bar -->
+    <rect x="0" y="20" width="110" height="22" rx="14"
+          fill="currentColor" opacity="0.10"/>
+
+    <!-- Rings -->
+    <line x1="25" y1="10" x2="25" y2="25"/>
+    <line x1="85" y1="10" x2="85" y2="25"/>
+
+    <!-- People -->
+    <circle cx="35" cy="70" r="7"/>
+    <circle cx="55" cy="65" r="9"/>
+    <circle cx="75" cy="70" r="7"/>
+
+    <path d="M25 92c4-10 20-10 24 0"/>
+    <path d="M45 92c5-12 25-12 30 0"/>
+    <path d="M70 92c4-10 20-10 24 0"/>
+
+    <!-- Checkmark -->
+    <path d="M75 105l10 10 20-25"/>
+
+    <!-- Spark -->
+    <g transform="translate(105,5)">
+      <circle r="3" fill="currentColor" stroke="none"/>
+      <line x1="-8" y1="0" x2="8" y2="0"/>
+      <line x1="0" y1="-8" x2="0" y2="8"/>
+    </g>
+
+  </g>
+
+  <!-- TEXT -->
+  <text x="110" y="170"
+        text-anchor="middle"
+        font-size="22"
+        class="text"
+        fill="currentColor">
+    EventNova
+  </text>
+
+  <text x="110" y="190"
+        text-anchor="middle"
+        font-size="10"
+        letter-spacing="2"
+        fill="currentColor"
+        opacity="0.7">
+    EVENT MANAGEMENT SYSTEM
+  </text>
+
+</svg>

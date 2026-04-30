@@ -2,25 +2,25 @@
 
 namespace App\Enums\Email;
 
-enum EmailStatusEnum:string
+enum EmailStatusEnum:int
 {
     // Pre-sending
-    case DRAFT = 'DRAFT';
-    case SCHEDULED = 'SCHEDULED';
-    case PROCESSED = 'PROCESSED';
-    case QUEUED = 'QUEUED';
+    case DRAFT = 0;
+    case SCHEDULED = 1;
+    case PROCESSED = 2;
+    case QUEUED = 3;
     // sending and post sending
-    case SENT = 'SENT';
-    case DELIVERED = 'DELIVERED';
-    case DELIVERY_DELAYED = 'DELIVERY_DELAYED';
-    case HARD_BOUNCE = 'HARDLY_BOUNCED_BACK';
-    case SOFT_BOUNCE = 'SOFTLY_BOUNCED_BACK';
-    case COMPLAINED = 'COMPLAINED_AS_SPAM';
-    case OPENED = 'OPENED';
-    case CLICKED = 'CLICKED';
-    case UNSUBSCRIBED = 'UNSUBSCRIBED';
+    case SENT = 4;
+    case DELIVERED = 5;
+    case DELIVERY_DELAYED = 6;
+    case HARD_BOUNCE = 7;
+    case SOFT_BOUNCE = 8;
+    case COMPLAINED = 9;
+    case OPENED = 10;
+    case CLICKED = 11;
+    case UNSUBSCRIBED = 12;
     // failed
-    case FAILED = 'FAILED';
-    case REJECTED = 'REJECTED';
-    case BLOCKED = 'BLOCKED';
+    case FAILED = 13;
+    case REJECTED = 14;
+    case BLOCKED = 15;
 }

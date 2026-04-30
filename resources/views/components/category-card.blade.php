@@ -21,5 +21,5 @@
     <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg sm:rounded-xl {{ $background }} mb-3 sm:mb-4 mx-auto group-hover:scale-110 transition-transform">
         <x-dynamic-component :component="$iconName" class="w-6 h-6 fill-white" />
     </div>
-    <h3 class="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white text-center">{{ $category }}</h3>
+    <h3 class="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white text-center">{{ __($category) }}</h3>
 </div>

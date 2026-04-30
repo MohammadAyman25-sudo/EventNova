@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'last_name',
         'email',
         'password',
+        'stripe_id',
         'theme',
         'notify_new_events',
         'notify_weekly_digest',
@@ -94,5 +95,15 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function interests()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function paymentTransactions()
+    {
+        return $this->hasMany(PaymentTransaction::class);
     }
 }

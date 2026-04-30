@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders', 'id')->cascadeOnDelete();
-            $table->foreignId('ticket_type_id')->constrained('ticket_types', 'id')->cascadeOnDelete();
+            $table->foreignId('ticket_id')->constrained('tickets', 'id')->cascadeOnDelete();
             $table->integer('quantity');
             $table->decimal('price_at_purchase', 10, 2);
             $table->decimal('sub_total', 10, 2);

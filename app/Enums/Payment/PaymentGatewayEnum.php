@@ -2,8 +2,9 @@
 
 namespace App\Enums\Payment;
 
-enum PaymentGatewayEnum:string
+enum PaymentGatewayEnum:int
 {
-    case STRIPE = 'stripe';
-    case PAYPAL = 'paypal';
+    case STRIPE = 0;
+    case PAYMOB = 1;
+    case PAYPAL = 2;
 }
