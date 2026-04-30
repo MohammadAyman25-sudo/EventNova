@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('token', fn()=>response()->json(["token" => csrf_token()]));
 
+Route::get('/', function () {
+    return redirect()->route('home', ['locale' => session('locale', config('app.locale'))]);
+});
+
 Route::group(['prefix'=>'{locale}'], function(){
     Route::get('/', function () {
         return view('welcome');

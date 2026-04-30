@@ -17,9 +17,13 @@ class SetLocale
     {
         $locale = $request->route('locale');
         if (!in_array($locale, ['en', 'ar'])) {
-            $locale = config('app.locale');
+            $locale = session('locale', config('app.locale'));
         }
+        
+        session(['locale' => $locale]);
         app()->setLocale($locale);
+        \Illuminate\Support\Facades\URL::defaults(['locale' => $locale]);
+        
         return $next($request);
     }
 }

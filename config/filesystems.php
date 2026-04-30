@@ -17,6 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Media Disk
+    |--------------------------------------------------------------------------
+    |
+    | The disk used for user-uploaded media such as event banner images.
+    | Defaults to Cloudflare R2 ('r2').
+    |
+    */
+
+    'media_disk' => env('MEDIA_DISK', 'r2'),
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
     |
@@ -61,14 +74,17 @@ return [
         ],
 
         'r2' => [
-            'driver' => 's3',
-            'key' => env('R2_ACCESS_KEY_ID'),
-            'secret' => env('R2_SECRET_ACCESS_KEY'),
-            'region' => env('R2_REGION', 'auto'),
-            'bucket' => env('R2_BUCKET'),
-            'endpoint' => env('R2_ENDPOINT'),
-            'url' => env('R2_URL'),
+            'driver'                  => 's3',
+            'key'                     => env('R2_ACCESS_KEY_ID'),
+            'secret'                  => env('R2_SECRET_ACCESS_KEY'),
+            'region'                  => env('R2_REGION', 'auto'),
+            'bucket'                  => env('R2_BUCKET'),
+            'endpoint'                => env('R2_ENDPOINT'),
+            'url'                     => env('R2_URL'),
             'use_path_style_endpoint' => true,
+            'visibility'              => 'public',
+            'throw'                   => false,
+            'report'                  => false,
         ],
 
     ],

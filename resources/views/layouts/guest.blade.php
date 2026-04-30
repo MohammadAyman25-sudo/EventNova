@@ -4,7 +4,7 @@
 ])
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,24 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 flex items-center justify-center px-2 py-2 md:px-4 md:py-12">
+            <div class="absolute top-4 right-4 rtl:left-4 rtl:right-auto sm:top-6 sm:right-6 sm:rtl:left-6 sm:rtl:right-auto flex items-center gap-4 z-50">
+                <x-theme-toggler />
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150 shadow-sm">
+                            {{ strtoupper(app()->getLocale()) }}
+                        </button>
+                    </x-slot>
+                    <x-slot name="content">
+                        <x-dropdown-link :href="route(Route::currentRouteName() ?? 'home', array_merge(request()->route()->parameters(), ['locale' => 'en']))">
+                            English
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route(Route::currentRouteName() ?? 'home', array_merge(request()->route()->parameters(), ['locale' => 'ar']))">
+                            العربية
+                        </x-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
+            </div>
             <div class="max-w-lg w-full h-fit">
                 <div class="text-center mb-8">
                     <div class="inline-block p-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl mb-4">

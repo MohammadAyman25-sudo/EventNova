@@ -50,4 +50,8 @@ return [
     'stripe' => [
         'secret' => env('STRIPE_SECRET'),
     ],
+
+    'mapbox' => [
+        'public_key' => env('MAPBOX_PUBLIC_KEY'),
+    ],
 ];

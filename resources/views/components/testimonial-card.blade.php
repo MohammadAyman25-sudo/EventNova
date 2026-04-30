@@ -12,15 +12,15 @@
         @endfor
     </div>
     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-        "{{ $quote }}"
+        "{{ __($quote) }}"
     </p>
     <div class="flex items-center">
         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 sm:mr-4 flex-shrink-0">
             <img src="{{ $authorImage }}" alt="{{ $authorName }}" class="w-full h-full object-cover">
         </div>
         <div>
-            <h4 class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">{{ $authorName }}</h4>
-            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ $authorTitle }}</p>
+            <h4 class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">{{ __($authorName) }}</h4>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ __($authorTitle) }}</p>
         </div>
     </div>
 </div>

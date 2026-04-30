@@ -24,7 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        URL::defaults(['locale' => app()->getLocale()]);
         Schema::defaultStringLength(125);
         Password::defaults(function(){
             return Password::min(8)

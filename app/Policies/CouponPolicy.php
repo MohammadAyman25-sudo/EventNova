@@ -13,7 +13,7 @@ class CouponPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole('super-admin') || $user->hasRole('organizer');
+        return $user->hasRole('super-admin') || $user->hasPermissionTo('coupons.view-own');
     }
 
     /**
@@ -21,7 +21,7 @@ class CouponPolicy
      */
     public function view(User $user, Coupon $coupon): bool
     {
-        return $this->viewAny($user);
+        return $user->hasRole('super-admin') || $user->hasPermissionTo('coupons.view-own');
     }
 
     /**
@@ -29,7 +29,7 @@ class CouponPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo('manage-coupons') || $user->hasRole('super-admin');
+        return $user->hasRole('super-admin') || $user->hasPermissionTo('coupons.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class CouponPolicy
      */
     public function update(User $user, Coupon $coupon): bool
     {
-        return $this->create($user);
+        return $user->hasRole('super-admin') || $user->hasPermissionTo('coupons.edit-own');
     }
 
     /**
@@ -45,6 +45,6 @@ class CouponPolicy
      */
     public function delete(User $user, Coupon $coupon): bool
     {
-        return $this->create($user);
+        return $user->hasRole('super-admin') || $user->hasPermissionTo('coupons.delete-own');
     }
 }

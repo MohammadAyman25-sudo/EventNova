@@ -16,11 +16,12 @@ class EventService
 {
   public function createEvent(User $user, CreateNewEventDTO $eventDTO): Event
   {
-    if (!$user->hasPermissionTo('create-own-events')) {
+    if (!$user->hasPermissionTo('events.create')) {
       throw new Exception(trans("event.unauthorized.create"));
     }
 
-    $bannerPath = $eventDTO->banner_image->store('events/banners', 'public');
+    $mediaDisk  = config('filesystems.media_disk', 'r2');
+    $bannerPath = $eventDTO->banner_image->storePublicly('events/banners', ['disk' => $mediaDisk]);
 
     $slugBase = Str::slug($eventDTO->title);
     $slug = $slugBase;
@@ -96,10 +97,11 @@ class EventService
     ];
 
     if ($newBanner instanceof UploadedFile) {
+      $mediaDisk = config('filesystems.media_disk', 'r2');
       if ($event->banner_image) {
-        Storage::disk('public')->delete($event->banner_image);
+        Storage::disk($mediaDisk)->delete($event->banner_image);
       }
-      $payload['banner_image'] = $newBanner->store('events/banners', 'public');
+      $payload['banner_image'] = $newBanner->storePublicly('events/banners', ['disk' => $mediaDisk]);
     }
 
     $event->update($payload);
@@ -111,7 +113,7 @@ class EventService
       throw new Exception(trans('event.unauthorized.delete'));
     }
     if ($event->banner_image) {
-      Storage::disk('public')->delete($event->banner_image);
+      Storage::disk(config('filesystems.media_disk', 'r2'))->delete($event->banner_image);
     }
     $event->delete();
   }

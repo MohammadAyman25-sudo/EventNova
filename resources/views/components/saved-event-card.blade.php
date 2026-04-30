@@ -21,6 +21,6 @@
                 <span>{{ $location }}</span>
             </div>
         </div>
-        <button class="w-full py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-semibold hover:shadow-lg transition-all whitespace-nowrap">Register Now</button>
+        <button class="w-full py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-semibold hover:shadow-lg transition-all whitespace-nowrap">{{ __('Register Now') }}</button>
     </div>
 </div>

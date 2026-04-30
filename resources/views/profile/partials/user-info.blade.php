@@ -9,7 +9,7 @@
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{{ Auth::user()->full_name }}</h1>
             <p class="text-gray-600 dark:text-gray-400">{{ Auth::user()->email }}</p>
             <div class="flex gap-3 mt-3">
-                <a href="" class="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-semibold hover:shadow-lg transition-all whitespace-nowrap cursor-pointer">Edit Profile</a>
+                <a href="" class="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-semibold hover:shadow-lg transition-all whitespace-nowrap cursor-pointer">{{ __('Edit Profile') }}</a>
             </div>
         </div>
     </div>

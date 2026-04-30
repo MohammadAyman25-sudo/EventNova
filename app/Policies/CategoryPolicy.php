@@ -29,7 +29,7 @@ class CategoryPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo('manage-categories') || $user->hasRole('super-admin');
+        return $user->hasRole('super-admin');
     }
 
     /**

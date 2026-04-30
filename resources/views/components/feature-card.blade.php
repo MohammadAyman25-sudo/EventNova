@@ -20,6 +20,6 @@
     <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl sm:rounded-2xl {{ $background }} mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
         <x-dynamic-component :component="$iconName" class="w-6 h-6 fill-white"/>
     </div>
-    <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">{{ $title }}</h3>
-    <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{{ $description }}</p>
+    <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">{{ __($title) }}</h3>
+    <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{{ __($description) }}</p>
 </div>

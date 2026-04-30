@@ -22,7 +22,7 @@
                         'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300' => $isDraft,
                         'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300'     => !$isDraft,
                     ])>
-                        {{ $statusLabel }}
+                        {{ __($statusLabel) }}
                     </span>
                 </p>
             </div>
@@ -63,12 +63,31 @@
                         </button>
                     </form>
                 @endcan
+
+                {{-- Favourite button — attendees only (events.save permission) --}}
+                @can('save', $event)
+                    <button
+                        id="fav-btn"
+                        type="button"
+                        onclick="toggleFavourite(this)"
+                        aria-label="{{ __('Add to favourites') }}"
+                        title="{{ __('Add to favourites') }}"
+                        class="fav-detail-btn inline-flex items-center gap-1.5 rounded-md border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-medium text-rose-700 hover:bg-rose-100 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-300 dark:hover:bg-rose-950/60 transition-colors duration-200"
+                    >
+                        <svg id="fav-heart-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-all duration-200"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                        </svg>
+                        <span id="fav-label">{{ __('Add to favourites') }}</span>
+                    </button>
+                @endcan
             </div>
         </div>
 
         @if ($event->banner_image)
             <div class="mb-8 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
-                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($event->banner_image) }}"
+                <img src="{{ \Illuminate\Support\Facades\Storage::disk(config('filesystems.media_disk', 'r2'))->url($event->banner_image) }}"
                      alt=""
                      class="h-64 w-full object-cover">
             </div>

@@ -1,4 +1,4 @@
-<x-guest-layout title="Complete Registeration" paragraph="Choose your role">
+<x-guest-layout title="{{ __('Complete Registeration') }}" paragraph="Choose your role">
     <form method="POST" action="{{ route('register.assign-role', []) }}" class="space-y-6">
         @csrf
         <div>

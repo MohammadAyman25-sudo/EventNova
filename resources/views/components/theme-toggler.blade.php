@@ -3,7 +3,7 @@
     <button
         type="button"
         id="theme-light"
-        title="Current:light"
+        title="{{ __('Current:light') }}"
         class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
         aria-label="Use light theme"
     >
@@ -14,7 +14,7 @@
     <button
         type="button"
         id="theme-dark"
-        title="Current:dark"
+        title="{{ __('Current:dark') }}"
         class="hidden w-9 h-9 sm:w-10 sm:h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
         aria-label="Use dark theme"
     >
@@ -25,7 +25,7 @@
     <button
         type="button"
         id="theme-system"
-        title="Current:system"
+        title="{{ __('Current:system') }}"
         class="hidden w-9 h-9 sm:w-10 sm:h-10 items-center justify-center rounded-lg transition-all whitespace-nowrap cursor-pointer text-gray-700  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
         aria-label="Use system theme"
     >

@@ -9,37 +9,37 @@
         <div class="text-center max-w-4xl mx-auto">
             <div class="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-purple-200 dark:border-purple-800 mb-6 sm:mb-8">
                 <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Join 50,000+ event enthusiasts</span>
+                <span class="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Join 50,000+ event enthusiasts') }}</span>
             </div>
-            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight px-4">Discover Events That <span class="block bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Inspire You</h1>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight px-4">{{ __('Discover Events That') }} <span class="block bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{{ __('Inspire You') }}</h1>
             <p class="text-base sm:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-                From concerts to workshops, find and book amazing experiences happening near you. Create unforgettable memories with EventNova.
+                {{ __('From concerts to workshops, find and book amazing experiences happening near you. Create unforgettable memories with EventNova.') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
                 <a href="{{route('register', [])}}" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl hover:shadow-2xl hover:scale-105 transition-all whitespace-nowrap cursor-pointer flex items-center justify-center">
                     <x-icons.rocket class="mr-2"/>
-                    <span>Start Exploring</span>
+                    <span>{{ __('Start Exploring') }}</span>
                 </a>
                 <a href="#" class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-lg transition-all whitespace-nowrap cursor-pointer flex items-center justify-center">
-                    <x-icons.compass class="mr-2"/><span>Browse Events</span>
+                    <x-icons.compass class="mr-2"/><span>{{ __('Browse Events') }}</span>
                 </a>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto px-4">
                 <div class="text-center">
                     <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">50K+</div>
-                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Active Users</div>
+                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ __('Active Users') }}</div>
                 </div>
                 <div class="text-center">
                     <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">10K+</div>
-                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Events Hosted</div>
+                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ __('Events Hosted') }}</div>
                 </div>
                 <div class="text-center">
                     <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">100K+</div>
-                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Tickets Sold</div>
+                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ __('Tickets Sold') }}</div>
                 </div>
                 <div class="text-center">
                     <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">4.9/5</div>
-                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">User Rating</div>
+                    <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ __('User Rating') }}</div>
                 </div>
             </div>
         </div>

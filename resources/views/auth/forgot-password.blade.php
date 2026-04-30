@@ -1,4 +1,4 @@
-<x-guest-layout title="Forgot Password ?" paragraph="No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.">
+<x-guest-layout title="{{ __('Forgot Password ?') }}" paragraph="No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -8,7 +8,7 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" type="email" name="email" placeholder="Enter your email" :value="old('email')" required autofocus />
+            <x-text-input id="email" type="email" name="email" placeholder="{{ __('Enter your email') }}" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
