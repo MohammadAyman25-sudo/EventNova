@@ -52,6 +52,6 @@ return [
     ],
 
     'mapbox' => [
-        'public_key' => env('MAPBOX_PUBLIC_KEY'),
+        'public_key' => env('MAPBOX_ACCESS_TOKEN'),
     ],
 ];
